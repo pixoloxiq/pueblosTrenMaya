@@ -1,0 +1,586 @@
+<script lang="ts">
+	let { onLanguageChange, lan, data, tauri, imgList } = $props();
+	import { fade } from 'svelte/transition';
+	import { register } from 'swiper/element/bundle';
+	import iconAG_sim from '../assets/imgs/icon_a.svg';
+	import iconE_sim from '../assets/imgs/icon_e.svg';
+	import iconHG_sim from '../assets/imgs/icon_hg.svg';
+	import iconLan from '../assets/imgs/icon_lan.svg';
+	import iconM_sim from '../assets/imgs/icon_m.svg';
+	import iconPM_sim from '../assets/imgs/icon_pm.svg';
+	import iconSA_sim from '../assets/imgs/icon_sa.svg';
+
+	import iconM_AG from '../assets/imgs/icn_m_ag.svg';
+	import iconM_E from '../assets/imgs/icn_m_e.svg';
+	import iconM_HG from '../assets/imgs/icn_m_hg.svg';
+	import iconM_M from '../assets/imgs/icn_m_m.svg';
+	import iconM_PM from '../assets/imgs/icn_m_pm.svg';
+	import iconM_SA from '../assets/imgs/icn_m_sa.svg';
+
+	import imgRutaLinea from '../assets/imgs/linea_ruta.svg';
+	import logoHotelesG from '../assets/imgs/logo_hg.png';
+	import logoMexicana from '../assets/imgs/logo_m.svg';
+	import logoTrenMayaSm from '../assets/imgs/logo_tm.svg';
+	import mapa from '../assets/imgs/mapa.svg';
+	import imgPuntoE from '../assets/imgs/puntoMapaE.svg';
+	import { default as imgPuntoHG, default as imgPuntoM } from '../assets/imgs/puntoMapaHG.svg';
+	import { default as imgPuntoAG, default as imgPuntoPM } from '../assets/imgs/puntoMapaPM.svg';
+	import imgPuntoSA from '../assets/imgs/puntoMapaSA.svg';
+	import imgRiel from '../assets/imgs/riel.svg';
+	import imgRuta from '../assets/imgs/ruta_portada.svg';
+	import BackSlide from './BackSlide.svelte';
+	import Instrucciones from './Instrucciones.svelte';
+	import Panorama from './Panorama.svelte';
+	import RutaLinea from './RutaLinea.svelte';
+
+	let progresSwipe = $state(0);
+	let sizeClass = $state('');
+	let rutaInstruccion: HTMLElement;
+	let rutaLinea: HTMLElement;
+	let logosInstrucciones: HTMLElement;
+	let simbologia: HTMLElement;
+	let puntoMapa: HTMLElement;
+	let infoVentana: HTMLElement;
+	let lugarIndex = $state(0);
+	let classInstrucciones = $state('');
+	let currentPlace: Place = $state({
+		tipo: '',
+		nombre: {},
+		descripcion: {},
+		px: 0,
+		py: 0,
+		img360: ''
+	});
+	let name = $derived(currentPlace?.nombre[lan]);
+
+	$inspect(name);
+
+	$effect(() => {
+		if (name) {
+			let longestWord = name;
+			//let longestWord = getLongestString(name.split(' '));
+
+			//sizeClass = ':' + longestWord + ' ' + longestWord.length;
+			//return;
+			if (longestWord.length > 12) {
+				sizeClass = 'fontSmall2';
+			} else if (longestWord.length > 8) {
+				sizeClass = 'fontSmall1';
+			} else {
+				sizeClass = '';
+			}
+		} else {
+			sizeClass = 'xx';
+		}
+	});
+
+	interface Place {
+		tipo: string;
+		nombre: { [key: string]: string };
+		descripcion: { [key: string]: string };
+		px: number;
+		py: number;
+		img360: string;
+	}
+
+	register();
+	const spaceBetween = 0;
+	const onProgress = (e: { detail: [any, any] }) => {
+		const [swiper, progress] = e.detail;
+		console.log(swiper.slides.length);
+		progresSwipe = progress * swiper.slides.length;
+
+		//console.log(progresSwipe);
+	};
+	const onSlideChange = (e: { detail: [any, any] }) => {
+		console.log('slide changed', e.detail[0].activeIndex);
+		classInstrucciones = e.detail[0].activeIndex == 0 ? 'instrucciones' : '';
+
+		//lugarIndex = Math.max(1, e.detail[0].activeIndex);
+		lugarIndex = e.detail[0].activeIndex;
+
+		currentPlace = data.lugares.find((lugar: any) => lugar.index == lugarIndex);
+
+		//if (currentPlace) console.log(currentPlace);
+		//goto('/#item-' + lugarIndex);
+	};
+	/* 	$effect(() => {
+		//console.log('currentPlace', currentPlace);
+		console.log('cambio');
+		$inspect(currentPlace.nombre);
+
+		let wordsArray = currentPlace.nombre[lan].split(' ');
+		let biggestWord = getLongestString(wordsArray);
+		console.log(biggestWord);
+		if (biggestWord.length > 8) {
+			sizeClass = 'fontSmall1';
+		} else if (biggestWord.length > 15) {
+			sizeClass = 'fontSmall2';
+		} else {
+			sizeClass = '';
+		}
+	});
+	$inspect(currentPlace); */
+
+	const getCurrentTipoClass = () => {
+		if (!currentPlace || currentPlace.tipo === '') return '';
+
+		if (currentPlace.tipo === 'AG') return 'tipo_ag'; //aeropuerto gafsacomm
+		if (currentPlace.tipo === 'E') return 'tipo_e'; //estacion
+		if (currentPlace.tipo === 'HG') return 'tipo_hg'; //hotel gafsacomm
+		if (currentPlace.tipo === 'M') return 'tipo_m'; //mexicana
+		if (currentPlace.tipo === 'PM') return 'tipo_pm'; //pueblo magico
+		if (currentPlace.tipo === 'SA') return 'tipo_sa'; //sitio arqueologico
+	};
+
+	const getCurrentTipoLabel = () => {
+		if (!currentPlace || currentPlace.tipo === '') return '';
+		/* if (currentPlace.tipo === 'E') return 'ESTACIÓN';
+		if (currentPlace.tipo === 'HG') return 'HOTEL GAFSACOMM';
+		if (currentPlace.tipo === 'SA') return 'SITIO ARQUEOLÓGICO';
+		if (currentPlace.tipo === 'PM') return 'PUEBLO MÁGICO'; */
+
+		if (currentPlace.tipo === 'AG') return data.ag[lan].toUpperCase(); //aeropuerto gafsacomm
+		if (currentPlace.tipo === 'E') return data.e[lan].toUpperCase(); //estacion
+		if (currentPlace.tipo === 'HG') return data.hg[lan].toUpperCase(); //hotel gafsacomm
+		if (currentPlace.tipo === 'M') return data.m[lan].toUpperCase(); //mexicana
+		if (currentPlace.tipo === 'PM') return data.pm[lan].toUpperCase(); //pueblo magico
+		if (currentPlace.tipo === 'SA') return data.sa[lan].toUpperCase(); //sitio arqueologico
+	};
+	const getCurrentTipoSrc = () => {
+		if (!currentPlace || currentPlace.tipo === '') return '';
+		/* if (currentPlace.tipo === 'E') return iconM_E;
+		if (currentPlace.tipo === 'HG') return iconM_HG;
+		if (currentPlace.tipo === 'SA') return iconM_SA;
+		if (currentPlace.tipo === 'PM') return iconM_PM; */
+
+		if (currentPlace.tipo === 'AG') return iconM_AG; //aeropuerto gafsacomm
+		if (currentPlace.tipo === 'E') return iconM_E; //estacion
+		if (currentPlace.tipo === 'HG') return iconM_HG; //hotel gafsacomm
+		if (currentPlace.tipo === 'M') return iconM_M; //mexicana
+		if (currentPlace.tipo === 'PM') return iconM_PM; //pueblo magico
+		if (currentPlace.tipo === 'SA') return iconM_SA; //sitio arqueologico
+	};
+	const getSizeClass = () => {
+		$inspect(currentPlace);
+		if (!currentPlace) return 'o';
+		if (!currentPlace.nombre[lan]) return 'o';
+		let wordsArray = currentPlace.nombre[lan].split(' ');
+		getLongestString(wordsArray);
+		if (wordsArray.length > 8) return 'fontSmall1';
+		if (wordsArray.length > 12) return 'fontSmall2';
+		return 'o';
+	};
+	const getLongestString = (arr: string[]) => {
+		return arr.reduce((longest, current) => {
+			return current.length > longest.length ? current : longest;
+		}, '');
+	};
+
+	const switchLanguageEs = () => {
+		//lan = 'es';
+		onLanguageChange('es');
+	};
+	const switchLanguageEn = () => {
+		//lan = 'en';
+		onLanguageChange('en');
+	};
+	$effect(() => {
+		let opacity = 1 - progresSwipe * 2;
+		//rutaInstruccion.style.opacity = `${opacity}`;
+		//logosInstrucciones.style.opacity = `${opacity}`;
+		//rutaLinea.style.opacity = `${1 - opacity}`;
+		simbologia.style.opacity = `${1 - opacity}`;
+		//infoVentana.style.opacity = `${1 - opacity}`;
+	});
+	$effect(() => {
+		if (currentPlace?.px) {
+			puntoMapa.style.left = `${currentPlace.px}px`;
+			puntoMapa.style.top = `${currentPlace.py}px`;
+		}
+	});
+</script>
+
+<div class="flex justify-center w-full ruta-main">
+	<swiper-container
+		slides-per-view={1}
+		space-between={spaceBetween}
+		centered-slides={true}
+		onswiperprogress={onProgress}
+		onswiperslidechange={onSlideChange}
+		threshold="2"
+		class="swiperContainer"
+		longSwipesRatio={0.01}
+	>
+		<swiper-slide class="slide"
+			><Instrucciones {onLanguageChange} {lan} {data}></Instrucciones></swiper-slide
+		>
+		{#each data.lugares.filter((item: { info: boolean }) => item.info === true) as lugar, index}
+			<swiper-slide class="slide"
+				><BackSlide
+					src={lugar.imagen}
+					{tauri}
+					actual={index == lugarIndex}
+					is360={lugar.img360 != ''}
+				></BackSlide></swiper-slide
+			>
+		{/each}
+		<!-- <swiper-slide class="slide"
+			><img class="portada-back w-[2160px] h-[3840px]" src={imgGUIA2} alt="Guia" /></swiper-slide
+		>
+		<swiper-slide class="slide"
+			><img class="portada-back w-[2160px] h-[3840px]" src={imgGUIA2} alt="Guia" /></swiper-slide
+		>
+		<swiper-slide class="slide">Slide 3</swiper-slide> -->
+	</swiper-container>
+</div>
+
+<!-- <div class="flex justify-center w-full logo-trenMaya pointer-events-none {classInstrucciones}">
+	<img class="logoTrenMaya" src={imgTrenMaya} alt="Logo Trem Maya" />
+</div> -->
+
+<div class="absolute flex justify-start w-full pointer-events-none lan-btn">
+	<div class="pointer-events-auto language-btn glow">
+		<div class="flex h-full">
+			<img src={iconLan} alt="Language Icon" />
+		</div>
+
+		<div class="language-btn-text">
+			ES&nbsp;&nbsp;<span class="boldSelected glow">/&nbsp;&nbsp;EN</span>
+		</div>
+		<button
+			aria-label="Cambiar a español"
+			type="button"
+			class="language-btn-es"
+			onclick={switchLanguageEs}
+		></button>
+		<button
+			aria-label="Switch to english"
+			type="button"
+			class="language-btn-en"
+			onclick={switchLanguageEn}
+		></button>
+	</div>
+</div>
+
+{#if false}
+	<div
+		bind:this={logosInstrucciones}
+		class="flex justify-center w-full pointer-events-none logos-inst"
+	>
+		<img class="logoMexicana" src={logoMexicana} alt="Logo Mexicana" />
+		<img class="logoTrenMayaSm" src={logoTrenMayaSm} alt="Logo Tren Maya" />
+		<img class="logoHotelesG" src={logoHotelesG} alt="Logo Hoteles Gafsacomm" />
+	</div>
+{/if}
+<div bind:this={simbologia} class="absolute w-full pointer-events-none simbologia">
+	<div class="relative simb">
+		<div class="relative flex items-center font-semibold align-middle simIcon">
+			<img src={iconPM_sim} alt="Logo Pueblo Magico" />{data.pm[lan]}
+		</div>
+		<div class="relative flex items-center font-semibold align-middle simIcon">
+			<img src={iconE_sim} alt="Logo Estacion" />{data.e[lan]}
+		</div>
+		<div class="relative flex items-center font-semibold align-middle simIcon">
+			<img src={iconAG_sim} alt="Logo Aeropuerto Gafsacomm" />{data.ag[lan]}
+		</div>
+		<div class="relative flex items-center font-semibold align-middle simIcon">
+			<img src={iconSA_sim} alt="Logo Sitio arqueologico" />{data.sa[lan]}
+		</div>
+		<div class="relative flex items-center font-semibold align-middle simIcon">
+			<img src={iconHG_sim} alt="Logo Hoteles Gafsacomm" />{data.hg[lan]}
+		</div>
+		<div class="relative flex items-center font-semibold align-middle simIcon">
+			<img src={iconM_sim} alt="Logo Hoteles Gafsacomm" />{data.m[lan]}
+		</div>
+	</div>
+	<div class="absolute flex justify-center logos">
+		<img class="simlogoTrenMayaSm" src={logoTrenMayaSm} alt="Logo Tren Maya" />
+		<img class="simlogoHotelesG" src={logoHotelesG} alt="Logo Hoteles Gafsacomm" />
+		<img class="simlogoMexicana" src={logoMexicana} alt="Logo Mexicana" />
+	</div>
+</div>
+{#if lugarIndex == 0}
+	<div
+		in:fade={{ duration: 250 }}
+		out:fade={{ duration: 250 }}
+		bind:this={rutaInstruccion}
+		class="flex justify-center w-full pointer-events-none ruta-inst"
+	>
+		<img class="ruta" src={imgRuta} alt="Ruta" />
+	</div>
+{/if}
+{#if lugarIndex > 0}
+	<div
+		in:fade={{ duration: 250, delay: 300 }}
+		out:fade={{ duration: 250 }}
+		bind:this={rutaLinea}
+		class="flex justify-center w-full pointer-events-none ruta-simb"
+	>
+		<img class="absolute z-0 ruta-linea" src={imgRutaLinea} alt="Ruta" />
+		<img class="absolute z-0 ruta-riel" src={imgRiel} alt="Riel" />
+		<RutaLinea {onLanguageChange} {lan} {data} {lugarIndex} {tauri}></RutaLinea>
+	</div>
+
+	<div
+		in:fade={{ duration: 250, delay: 300 }}
+		out:fade={{ duration: 250 }}
+		bind:this={infoVentana}
+		class="absolute flex justify-center w-full pointer-events-none info"
+	>
+		<div class="ventanaInfo">
+			<img class="mapa" src={mapa} alt="Mapa" />
+			<div bind:this={puntoMapa} class="punto-mapa {getCurrentTipoClass()}">
+				{#if currentPlace.tipo === 'AG'}
+					<img class="punto" src={imgPuntoAG} alt="Punto" />
+				{:else if currentPlace.tipo === 'E'}
+					<img class="punto" src={imgPuntoE} alt="Punto" />
+				{:else if currentPlace.tipo === 'HG'}
+					<img class="punto" src={imgPuntoHG} alt="Punto" />
+				{:else if currentPlace.tipo === 'M'}
+					<img class="punto" src={imgPuntoM} alt="Punto" />
+				{:else if currentPlace.tipo === 'PM'}
+					<img class="punto" src={imgPuntoPM} alt="Punto" />
+				{:else if currentPlace.tipo === 'SA'}
+					<img class="punto" src={imgPuntoSA} alt="Punto" />
+				{/if}
+			</div>
+			<div class="placeInfo">
+				<h2 class="font-normal {getCurrentTipoClass()}">
+					<img class="iconTipo" src={getCurrentTipoSrc()} alt="Tipo de lugar" />
+					{getCurrentTipoLabel()}
+				</h2>
+				<h1 class="font-semibold {sizeClass}">{currentPlace.nombre[lan]}</h1>
+				<div class="font-normal content">{@html currentPlace?.descripcion[lan]}</div>
+			</div>
+		</div>
+	</div>
+	{#if currentPlace.img360}
+		<Panorama src={currentPlace?.img360} {tauri}></Panorama>
+	{/if}
+{/if}
+
+<!-- <img class="pleca" src={imgPleca} alt="Pleca" /> -->
+
+<style>
+	.logo-trenMaya {
+		position: absolute;
+		top: 90px;
+		transition: all 0.2s ease-in-out;
+	}
+	.logo-trenMaya.instrucciones {
+		top: 246px;
+	}
+	.simbologia {
+		top: 3546px;
+		.simb {
+			padding-left: 110px;
+			width: 1150px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			letter-spacing: 2.5px;
+
+			.simIcon {
+				width: 330px;
+				font-size: 24px;
+				margin-bottom: 30px;
+				padding-right: 20px;
+				img {
+					width: 58px;
+					height: 58px;
+					margin-right: 30px;
+				}
+			}
+		}
+		.logos {
+			right: 0px;
+			width: 950px;
+			top: 40px;
+			/* align-content: center; */
+			flex-wrap: wrap;
+			/* justify-content: flex-start; */
+			gap: 104px;
+			padding-inline: 50px;
+			align-items: center;
+
+			.simlogoMexicana {
+				height: 45px;
+			}
+			.simlogoTrenMayaSm {
+				height: 66px;
+			}
+			.simlogoHotelesG {
+				height: 40px;
+			}
+		}
+	}
+
+	.swiperContainer {
+		width: 2160px;
+		height: 3840px;
+		z-index: 0;
+	}
+	.lan-btn {
+		display: flex;
+		top: 1742px;
+		z-index: 1;
+		.language-btn {
+			width: 450px;
+			height: 100px;
+			display: flex;
+			background-color: #00524c;
+			/* opacity: 0.4; */
+			color: white;
+			font-size: 50px;
+			align-content: center;
+			justify-content: start;
+			flex-wrap: wrap;
+			position: relative;
+			text-shadow: 0 0 20px #fff;
+
+			img {
+				width: 58px;
+				margin-inline-start: 58px;
+				margin-inline-end: 75px;
+			}
+
+			.language-btn-text {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			button {
+				height: 100%;
+				width: 100px;
+				position: absolute;
+				&.language-btn-es {
+					/* background-color: red; */
+					width: 290px;
+				}
+				&.language-btn-en {
+					/* background-color: blue; */
+					left: 290px;
+					width: 160px;
+				}
+			}
+
+			&:hover {
+				box-shadow: 0 0 25px #00524c;
+			}
+		}
+	}
+	.logos-inst {
+		position: absolute;
+		bottom: 246px;
+		align-items: center;
+		gap: 90px;
+	}
+	.logoMexicana {
+		height: 64px;
+	}
+	.logoTrenMayaSm {
+		height: 84px;
+	}
+	.logoHotelesG {
+		height: 46px;
+	}
+	.ruta-linea {
+		top: 108px;
+	}
+	.ruta-riel {
+		top: 152px;
+	}
+	.ruta-inst {
+		position: absolute;
+		bottom: 645px;
+	}
+	.ruta-simb {
+		position: absolute;
+		bottom: 588px;
+		height: 240px;
+	}
+	.punto-mapa {
+		width: 54px;
+		height: 54px;
+		position: absolute;
+	}
+	.info {
+		top: 1930px;
+		.ventanaInfo {
+			width: 2016px;
+			height: 894px;
+			background: rgba(0, 0, 0, 0.6);
+			-webkit-backdrop-filter: blur(14px);
+			backdrop-filter: blur(14px);
+			border: 1px solid rgb(255 255 255);
+			border-radius: 45px;
+			overflow: hidden;
+			.mapa {
+				width: 1080px;
+				bottom: -4px;
+				left: -190px;
+				position: absolute;
+			}
+			.placeInfo {
+				width: 1120px;
+				margin-left: 890px;
+				padding-inline: 87px;
+				.iconTipo {
+					height: 55px;
+					margin-left: 10px;
+					float: left;
+					margin-right: 44px;
+				}
+				h2 {
+					margin-top: 77px;
+					font-size: 33px;
+					display: flex;
+					align-items: center;
+					&.tipo_ag {
+						color: #eb5a30;
+					}
+					&.tipo_e {
+						color: #02998e;
+					}
+					&.tipo_hg {
+						color: #3fa9f5;
+					}
+					&.tipo_m {
+						color: #2670a8;
+					}
+					&.tipo_pm {
+						color: #ff507a;
+					}
+					&.tipo_sa {
+						color: #9547f4;
+					}
+				}
+				h1 {
+					margin-top: 18px;
+					font-size: 162px;
+					line-height: 0.9;
+					&.fontSmall1 {
+						font-size: 119px;
+					}
+					&.fontSmall2 {
+						font-size: 100px;
+					}
+				}
+				.content {
+					font-size: 28px;
+					margin-top: 90px;
+					line-height: 1.25;
+				}
+			}
+		}
+	}
+	:global(p) {
+		margin-bottom: 40px;
+	}
+
+	.pleca {
+		bottom: 0px;
+		position: absolute;
+	}
+</style>
