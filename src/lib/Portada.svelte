@@ -19,7 +19,7 @@
 	};
 
 	$effect(() => {
-		console.log(data.instrucciones);
+		console.log(data.textos.instrucciones);
 	});
 </script>
 
@@ -54,18 +54,8 @@
 				<div class="language-btn-text">
 					ES&nbsp;&nbsp;<span class="boldSelected glow">/&nbsp;&nbsp;EN</span>
 				</div>
-				<button
-					aria-label="Cambiar a español"
-					type="button"
-					class="language-btn-es"
-					onclick={switchLanguageEs}
-				></button>
-				<button
-					aria-label="Switch to english"
-					type="button"
-					class="language-btn-en"
-					onclick={switchLanguageEn}
-				></button>
+				<button aria-label="Cambiar a español" type="button" class="language-btn-es" onclick={switchLanguageEs}></button>
+				<button aria-label="Switch to english" type="button" class="language-btn-en" onclick={switchLanguageEn}></button>
 			</div>
 
 			<!-- {language === 'English' ? 'Switch to Spanish' : 'Switch to English'} -->
@@ -73,14 +63,12 @@
 		<div class="cont-center portada-instrucciones mt-[88px]">
 			<img class="handIcon heartbeat" src={iconHand} alt="Hand Icon" />
 		</div>
-		<div
-			class="cont-center flex flex-col items-center justify-center portada-instrucciones mt-[88px]"
-		>
+		<div class="cont-center flex flex-col items-center justify-center portada-instrucciones mt-[88px]">
 			<p class="font-semibold">
-				{@html data.instrucciones.es}
+				{@html data.textos.instrucciones.es}
 			</p>
 			<p class="mt-[90px] font-semibold">
-				{@html data.instrucciones.en}
+				{@html data.textos.instrucciones.en}
 			</p>
 		</div>
 	</div>

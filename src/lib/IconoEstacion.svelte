@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { getTauriUrl } from '../utils/utils';
-	let { src, label, tauri, selected, id } = $props();
+	let { src, label, tauri, selected, id, active } = $props();
 
 	let newSrc = $state('');
 
@@ -23,7 +23,7 @@
 </script>
 
 <!-- src={newSrc} -->
-<div id="item-{id}" class="icono {selected ? 'selected' : ''} relative w-max">
+<div id="item-{id}" class="iconoInt icono {selected ? 'selected' : ''} {active ? 'active' : ''} relative w-max">
 	<img src={newSrc} alt="icono estación" class="iconEstacionBg estacion" />
 	<div class="absolute font-normal labelIcon">
 		{label}
@@ -32,12 +32,18 @@
 
 <style>
 	.icono {
+		transition: all 0.2s ease-in-out;
+		scroll-snap-align: unset;
+
 		width: 154px;
 		height: 154px;
 		.estacion {
 			width: 100%;
 			height: 100%;
 			transition: all 0.2s ease-in-out;
+		}
+		&.active {
+			scroll-snap-align: center;
 		}
 		.labelIcon {
 			transition: all 0.2s ease-in-out;
@@ -49,7 +55,7 @@
 			left: -325px;
 		}
 	}
-	.icono.selected {
+	.icono.selected.active {
 		width: 240px;
 		height: 240px;
 

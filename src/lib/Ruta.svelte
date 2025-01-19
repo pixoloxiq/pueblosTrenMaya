@@ -1,7 +1,9 @@
 <script lang="ts">
 	let { onLanguageChange, lan, data, tauri, imgList } = $props();
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { register } from 'swiper/element/bundle';
+	import fondo from '../assets/imgs/fondo_sitios_0.jpg';
 	import iconAG_sim from '../assets/imgs/icon_a.svg';
 	import iconE_sim from '../assets/imgs/icon_e.svg';
 	import iconHG_sim from '../assets/imgs/icon_hg.svg';
@@ -17,19 +19,14 @@
 	import iconM_PM from '../assets/imgs/icn_m_pm.svg';
 	import iconM_SA from '../assets/imgs/icn_m_sa.svg';
 
-	import imgRutaLinea from '../assets/imgs/linea_ruta.svg';
 	import logoHotelesG from '../assets/imgs/logo_hg.png';
 	import logoMexicana from '../assets/imgs/logo_m.svg';
 	import logoTrenMayaSm from '../assets/imgs/logo_tm.svg';
-	import mapa from '../assets/imgs/mapa.svg';
-	import imgPuntoE from '../assets/imgs/puntoMapaE.svg';
-	import { default as imgPuntoHG, default as imgPuntoM } from '../assets/imgs/puntoMapaHG.svg';
-	import { default as imgPuntoAG, default as imgPuntoPM } from '../assets/imgs/puntoMapaPM.svg';
-	import imgPuntoSA from '../assets/imgs/puntoMapaSA.svg';
-	import imgRiel from '../assets/imgs/riel.svg';
+	import mapa from '../assets/imgs/mapa_peninsula.svg';
 	import imgRuta from '../assets/imgs/ruta_portada.svg';
 	import BackSlide from './BackSlide.svelte';
 	import Instrucciones from './Instrucciones.svelte';
+	import MapaPosition from './MapaPosition.svelte';
 	import Panorama from './Panorama.svelte';
 	import RutaLinea from './RutaLinea.svelte';
 
@@ -41,15 +38,17 @@
 	let simbologia: HTMLElement;
 	let puntoMapa: HTMLElement;
 	let infoVentana: HTMLElement;
-	let lugarIndex = $state(0);
+	let slideIndex = $state(0);
 	let classInstrucciones = $state('');
+	let swiperEl: any;
 	let currentPlace: Place = $state({
 		tipo: '',
 		nombre: {},
 		descripcion: {},
 		px: 0,
 		py: 0,
-		img360: ''
+		img360: '',
+		mapa: '',
 	});
 	let name = $derived(currentPlace?.nombre[lan]);
 
@@ -81,13 +80,14 @@
 		px: number;
 		py: number;
 		img360: string;
+		mapa: string;
 	}
 
 	register();
 	const spaceBetween = 0;
 	const onProgress = (e: { detail: [any, any] }) => {
 		const [swiper, progress] = e.detail;
-		console.log(swiper.slides.length);
+		//console.log(swiper.slides.length);
 		progresSwipe = progress * swiper.slides.length;
 
 		//console.log(progresSwipe);
@@ -97,9 +97,9 @@
 		classInstrucciones = e.detail[0].activeIndex == 0 ? 'instrucciones' : '';
 
 		//lugarIndex = Math.max(1, e.detail[0].activeIndex);
-		lugarIndex = e.detail[0].activeIndex;
+		slideIndex = e.detail[0].activeIndex;
 
-		currentPlace = data.lugares.find((lugar: any) => lugar.index == lugarIndex);
+		currentPlace = data.lugares.find((lugar: any) => lugar.indexSlide == slideIndex);
 
 		//if (currentPlace) console.log(currentPlace);
 		//goto('/#item-' + lugarIndex);
@@ -119,8 +119,8 @@
 		} else {
 			sizeClass = '';
 		}
-	});
-	$inspect(currentPlace); */
+	});*/
+	$inspect(currentPlace);
 
 	const getCurrentTipoClass = () => {
 		if (!currentPlace || currentPlace.tipo === '') return '';
@@ -140,12 +140,12 @@
 		if (currentPlace.tipo === 'SA') return 'SITIO ARQUEOLÓGICO';
 		if (currentPlace.tipo === 'PM') return 'PUEBLO MÁGICO'; */
 
-		if (currentPlace.tipo === 'AG') return data.ag[lan].toUpperCase(); //aeropuerto gafsacomm
-		if (currentPlace.tipo === 'E') return data.e[lan].toUpperCase(); //estacion
-		if (currentPlace.tipo === 'HG') return data.hg[lan].toUpperCase(); //hotel gafsacomm
-		if (currentPlace.tipo === 'M') return data.m[lan].toUpperCase(); //mexicana
-		if (currentPlace.tipo === 'PM') return data.pm[lan].toUpperCase(); //pueblo magico
-		if (currentPlace.tipo === 'SA') return data.sa[lan].toUpperCase(); //sitio arqueologico
+		if (currentPlace.tipo === 'AG') return data.textos.ag[lan].toUpperCase(); //aeropuerto gafsacomm
+		if (currentPlace.tipo === 'E') return data.textos.e[lan].toUpperCase(); //estacion
+		if (currentPlace.tipo === 'HG') return data.textos.hg[lan].toUpperCase(); //hotel gafsacomm
+		if (currentPlace.tipo === 'M') return data.textos.m[lan].toUpperCase(); //mexicana
+		if (currentPlace.tipo === 'PM') return data.textos.pm[lan].toUpperCase(); //pueblo magico
+		if (currentPlace.tipo === 'SA') return data.textos.sa[lan].toUpperCase(); //sitio arqueologico
 	};
 	const getCurrentTipoSrc = () => {
 		if (!currentPlace || currentPlace.tipo === '') return '';
@@ -193,11 +193,17 @@
 		simbologia.style.opacity = `${1 - opacity}`;
 		//infoVentana.style.opacity = `${1 - opacity}`;
 	});
-	$effect(() => {
+	/* $effect(() => {
 		if (currentPlace?.px) {
 			puntoMapa.style.left = `${currentPlace.px}px`;
 			puntoMapa.style.top = `${currentPlace.py}px`;
 		}
+	}); */
+	const updateSlide = (newValue: number) => {
+		swiperEl.swiper.slideTo(newValue);
+	};
+	onMount(() => {
+		swiperEl = document.querySelector('swiper-container');
 	});
 </script>
 
@@ -209,20 +215,14 @@
 		onswiperprogress={onProgress}
 		onswiperslidechange={onSlideChange}
 		threshold="2"
+		enabled={true}
 		class="swiperContainer"
 		longSwipesRatio={0.01}
 	>
-		<swiper-slide class="slide"
-			><Instrucciones {onLanguageChange} {lan} {data}></Instrucciones></swiper-slide
-		>
+		<swiper-slide class="slide"><Instrucciones {onLanguageChange} {lan} {data}></Instrucciones></swiper-slide>
 		{#each data.lugares.filter((item: { info: boolean }) => item.info === true) as lugar, index}
 			<swiper-slide class="slide"
-				><BackSlide
-					src={lugar.imagen}
-					{tauri}
-					actual={index == lugarIndex}
-					is360={lugar.img360 != ''}
-				></BackSlide></swiper-slide
+				><BackSlide src={lugar.imagen} {tauri} actual={index == slideIndex} is360={lugar.img360 != ''} marginTop={lugar.py}></BackSlide></swiper-slide
 			>
 		{/each}
 		<!-- <swiper-slide class="slide"
@@ -239,35 +239,8 @@
 	<img class="logoTrenMaya" src={imgTrenMaya} alt="Logo Trem Maya" />
 </div> -->
 
-<div class="absolute flex justify-start w-full pointer-events-none lan-btn">
-	<div class="pointer-events-auto language-btn glow">
-		<div class="flex h-full">
-			<img src={iconLan} alt="Language Icon" />
-		</div>
-
-		<div class="language-btn-text">
-			ES&nbsp;&nbsp;<span class="boldSelected glow">/&nbsp;&nbsp;EN</span>
-		</div>
-		<button
-			aria-label="Cambiar a español"
-			type="button"
-			class="language-btn-es"
-			onclick={switchLanguageEs}
-		></button>
-		<button
-			aria-label="Switch to english"
-			type="button"
-			class="language-btn-en"
-			onclick={switchLanguageEn}
-		></button>
-	</div>
-</div>
-
 {#if false}
-	<div
-		bind:this={logosInstrucciones}
-		class="flex justify-center w-full pointer-events-none logos-inst"
-	>
+	<div bind:this={logosInstrucciones} class="flex justify-center w-full pointer-events-none logos-inst">
 		<img class="logoMexicana" src={logoMexicana} alt="Logo Mexicana" />
 		<img class="logoTrenMayaSm" src={logoTrenMayaSm} alt="Logo Tren Maya" />
 		<img class="logoHotelesG" src={logoHotelesG} alt="Logo Hoteles Gafsacomm" />
@@ -276,22 +249,22 @@
 <div bind:this={simbologia} class="absolute w-full pointer-events-none simbologia">
 	<div class="relative simb">
 		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconPM_sim} alt="Logo Pueblo Magico" />{data.pm[lan]}
+			<img src={iconPM_sim} alt="Logo Pueblo Magico" />{data.textos.pm[lan]}
 		</div>
 		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconE_sim} alt="Logo Estacion" />{data.e[lan]}
+			<img src={iconE_sim} alt="Logo Estacion" />{data.textos.e[lan]}
 		</div>
 		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconAG_sim} alt="Logo Aeropuerto Gafsacomm" />{data.ag[lan]}
+			<img src={iconAG_sim} alt="Logo Aeropuerto Gafsacomm" />{data.textos.ag[lan]}
 		</div>
 		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconSA_sim} alt="Logo Sitio arqueologico" />{data.sa[lan]}
+			<img src={iconSA_sim} alt="Logo Sitio arqueologico" />{data.textos.sa[lan]}
 		</div>
 		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconHG_sim} alt="Logo Hoteles Gafsacomm" />{data.hg[lan]}
+			<img src={iconHG_sim} alt="Logo Hoteles Gafsacomm" />{data.textos.hg[lan]}
 		</div>
 		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconM_sim} alt="Logo Hoteles Gafsacomm" />{data.m[lan]}
+			<img src={iconM_sim} alt="Logo Hoteles Gafsacomm" />{data.textos.m[lan]}
 		</div>
 	</div>
 	<div class="absolute flex justify-center logos">
@@ -300,28 +273,31 @@
 		<img class="simlogoMexicana" src={logoMexicana} alt="Logo Mexicana" />
 	</div>
 </div>
-{#if lugarIndex == 0}
-	<div
-		in:fade={{ duration: 250 }}
-		out:fade={{ duration: 250 }}
-		bind:this={rutaInstruccion}
-		class="flex justify-center w-full pointer-events-none ruta-inst"
-	>
+{#if slideIndex == 0}
+	<div in:fade={{ duration: 250 }} out:fade={{ duration: 250 }} bind:this={rutaInstruccion} class="flex justify-center w-full pointer-events-none ruta-inst">
 		<img class="ruta" src={imgRuta} alt="Ruta" />
 	</div>
 {/if}
-{#if lugarIndex > 0}
-	<div
-		in:fade={{ duration: 250, delay: 300 }}
-		out:fade={{ duration: 250 }}
-		bind:this={rutaLinea}
-		class="flex justify-center w-full pointer-events-none ruta-simb"
-	>
-		<img class="absolute z-0 ruta-linea" src={imgRutaLinea} alt="Ruta" />
-		<img class="absolute z-0 ruta-riel" src={imgRiel} alt="Riel" />
-		<RutaLinea {onLanguageChange} {lan} {data} {lugarIndex} {tauri}></RutaLinea>
+{#if slideIndex > 0}
+	<img in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 250 }} class="absolute h-fit fondo" src={fondo} alt="fondo" />
+	<div in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 250 }} bind:this={rutaLinea} class="top-0 flex justify-center w-full ruta-simb">
+		<!-- <div class="relative top-0 w-[500px] h-full bg-lightGreen intersect left-1/2"></div> -->
+		<RutaLinea {onLanguageChange} {lan} {data} {tauri} {updateSlide}></RutaLinea>
 	</div>
 
+	<div class="absolute z-20 flex justify-start w-full pointer-events-none lan-btn">
+		<div class="pointer-events-auto language-btn glow">
+			<div class="flex h-full">
+				<img src={iconLan} alt="Language Icon" />
+			</div>
+
+			<div class="language-btn-text">
+				ES&nbsp;&nbsp;<span class="boldSelected glow">/&nbsp;&nbsp;EN</span>
+			</div>
+			<button aria-label="Cambiar a español" type="button" class="language-btn-es" onclick={switchLanguageEs}></button>
+			<button aria-label="Switch to english" type="button" class="language-btn-en" onclick={switchLanguageEn}></button>
+		</div>
+	</div>
 	<div
 		in:fade={{ duration: 250, delay: 300 }}
 		out:fade={{ duration: 250 }}
@@ -330,7 +306,9 @@
 	>
 		<div class="ventanaInfo">
 			<img class="mapa" src={mapa} alt="Mapa" />
-			<div bind:this={puntoMapa} class="punto-mapa {getCurrentTipoClass()}">
+			<!-- <img class="mapa" src={currentPlace.mapa} alt="MapaPosition" /> -->
+			<MapaPosition src={currentPlace.mapa} {tauri} />
+			<!-- <div bind:this={puntoMapa} class="punto-mapa {getCurrentTipoClass()}">
 				{#if currentPlace.tipo === 'AG'}
 					<img class="punto" src={imgPuntoAG} alt="Punto" />
 				{:else if currentPlace.tipo === 'E'}
@@ -344,7 +322,7 @@
 				{:else if currentPlace.tipo === 'SA'}
 					<img class="punto" src={imgPuntoSA} alt="Punto" />
 				{/if}
-			</div>
+			</div> -->
 			<div class="placeInfo">
 				<h2 class="font-normal {getCurrentTipoClass()}">
 					<img class="iconTipo" src={getCurrentTipoSrc()} alt="Tipo de lugar" />
@@ -356,7 +334,9 @@
 		</div>
 	</div>
 	{#if currentPlace.img360}
-		<Panorama src={currentPlace?.img360} {tauri}></Panorama>
+		{#key currentPlace}
+			<Panorama src={currentPlace?.img360} {tauri}></Panorama>
+		{/key}
 	{/if}
 {/if}
 
@@ -424,7 +404,6 @@
 	.lan-btn {
 		display: flex;
 		top: 1742px;
-		z-index: 1;
 		.language-btn {
 			width: 450px;
 			height: 100px;
@@ -505,6 +484,9 @@
 		height: 54px;
 		position: absolute;
 	}
+	.fondo {
+		top: 1842px;
+	}
 	.info {
 		top: 1930px;
 		.ventanaInfo {
@@ -516,11 +498,14 @@
 			border: 1px solid rgb(255 255 255);
 			border-radius: 45px;
 			overflow: hidden;
+
 			.mapa {
-				width: 1080px;
+				width: 1229px;
+				/* height: 873px; */
 				bottom: -4px;
-				left: -190px;
+				left: -186px;
 				position: absolute;
+				/* opacity: .2; */
 			}
 			.placeInfo {
 				width: 1120px;
@@ -569,14 +554,14 @@
 				}
 				.content {
 					font-size: 28px;
-					margin-top: 90px;
+					margin-top: 80px;
 					line-height: 1.25;
 				}
 			}
 		}
 	}
 	:global(p) {
-		margin-bottom: 40px;
+		margin-bottom: 30px;
 	}
 
 	.pleca {

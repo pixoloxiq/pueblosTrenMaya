@@ -1,7 +1,6 @@
 <script>
-	let { length, edo } = $props();
+	let { edo } = $props();
 	import Vagon1 from './Vagon1.svelte';
-	import Vagon2 from './Vagon2.svelte';
 	let classLength = 'length1';
 
 	$effect(() => {
@@ -10,24 +9,17 @@
 	});
 </script>
 
-<div id="item-0" class="z-10 inline-table tren">
+<div id="item-0" class="z-10 inline-table tren iconoInt">
 	<div class="flex items-center justify-start flex-grow tren w-max">
-		{#each Array(length) as vag, i}
-			{#if i < length - 1}
-				<Vagon1 />
-			{:else}
-				<Vagon2 />
-			{/if}
-		{/each}
+		<Vagon1 />
 	</div>
-	{#if length > 2}
-		<div class="w-full font-normal text-center label">{edo}</div>
-	{/if}
+	<!-- <div class="w-full font-normal text-center label">{edo}</div> -->
 	<!-- <div class="hidden length1 length2 length3"></div> -->
 </div>
 
 <style>
 	.tren {
+		scroll-snap-align: center;
 		height: 240px;
 	}
 	.label {

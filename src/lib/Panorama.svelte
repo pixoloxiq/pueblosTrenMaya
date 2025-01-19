@@ -14,7 +14,7 @@
 			let viewer = new Viewer({
 				navbar: [],
 				container: viewerEl,
-				panorama: newSrc
+				panorama: newSrc,
 			});
 
 			viewer.addEventListener('ready', () => {
@@ -47,6 +47,7 @@
 		top: 220px;
 		opacity: 0;
 		transition: all 0.2s ease-in-out;
+		z-index: 100;
 	}
 	#viewer.ready {
 		opacity: 1;

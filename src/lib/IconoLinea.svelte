@@ -70,39 +70,27 @@
 	const getLabel = (tipo: string) => {
 		switch (tipo) {
 			case 'HG':
-				return '';
+				return label;
 			case 'PM':
-				return 'PUEBLO MÁGICO';
+				return label;
 			case 'SA':
 				return label;
 			default:
 				return label;
 		}
 	};
+	export function updateSelected(newValue: boolean) {
+		selected = newValue;
+	}
 </script>
 
-<div id="item-{id}" class="icono {selected ? 'selected' : ''} relative iconContainer w-max">
+<div id="item-{id}" class="iconoInt icono {selected ? 'selected' : ''} relative iconContainer w-max">
 	<div class="relative w-full h-full">
 		{#if selected}
-			<img
-				transition:fade={{ duration: 250 }}
-				src={getIconSel(tipo)}
-				alt="icono estación"
-				class="iconEstacionBg estacion"
-			/>
+			<img transition:fade={{ duration: 250 }} src={getIconSel(tipo)} alt="icono estación" class="iconEstacionBg estacion" />
 		{:else}
-			<img
-				transition:fade={{ duration: 250 }}
-				src={getIconNormal(tipo)}
-				alt="icono estación"
-				class="iconEstacionBg estacion"
-			/>
-			<img
-				transition:fade={{ duration: 250 }}
-				src={getIconSim(tipo)}
-				alt="icono Simbologia"
-				class="iconEstacionSimb estacion"
-			/>
+			<img transition:fade={{ duration: 250 }} src={getIconNormal(tipo)} alt="icono estación" class="iconEstacionBg estacion" />
+			<img transition:fade={{ duration: 50 }} src={getIconSim(tipo)} alt="icono Simbologia" class="iconEstacionSimb estacion" />
 		{/if}
 
 		<div class="absolute font-normal labelIcon">
@@ -115,6 +103,7 @@
 
 <style>
 	.icono {
+		scroll-snap-align: center;
 		width: 100px;
 		height: 100px;
 		transition: all 0.2s ease-in-out;
@@ -142,6 +131,7 @@
 			line-height: 1.1;
 		}
 		.iconEstacionSimb {
+			transition: all 0.1s ease-in-out;
 			top: 136px;
 		}
 	}

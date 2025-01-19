@@ -68,13 +68,13 @@
 		{#if lan === 'es'}
 			<div class="bienvenido">
 				<h1 transition:fade={{ duration: 250 }} class="absolute">
-					{@html data.bienvenido.es}
+					{@html data.textos.bienvenido.es}
 				</h1>
 			</div>
 		{:else}
 			<div class="bienvenido">
 				<h1 transition:fade={{ duration: 250 }} class="absolute">
-					{@html data.bienvenido.en}
+					{@html data.textos.bienvenido.en}
 				</h1>
 			</div>
 		{/if}
@@ -82,16 +82,14 @@
 		<div class="flex justify-center w-full portada-instrucciones mt-[338px]">
 			<img class="icon-hand wobble-hor-bottom" src={iconHand} alt="Hand Icon" />
 		</div>
-		<div
-			class="cont-center flex flex-col items-center justify-center inst-instrucciones text-lightGreen text-center mt-[88px]"
-		>
+		<div class="cont-center flex flex-col items-center justify-center inst-instrucciones text-lightGreen text-center mt-[88px]">
 			{#if lan === 'es'}
 				<p transition:fade={{ duration: 250 }} class="absolute font-semibold mt-[110px]">
-					{@html data.instrucciones2.es}
+					{@html data.textos.instrucciones2.es}
 				</p>
 			{:else}
 				<p transition:fade={{ duration: 250 }} class="absolute font-semibold mt-[110px]">
-					{@html data.instrucciones2.en}
+					{@html data.textos.instrucciones2.en}
 				</p>
 			{/if}
 		</div>

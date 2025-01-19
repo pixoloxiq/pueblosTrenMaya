@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { invoke } from '@tauri-apps/api/core';
+	import { setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	// import function to register Swiper custom elements
 	import Ruta from '$lib/Ruta.svelte';
@@ -15,6 +16,8 @@
 
 	let boxEl = $state(null);
 	let boxWidth = $state(0);
+	let scale = $state({ val: 1 });
+	setContext('scale', scale);
 
 	//console.log(`--> ${homeDirPath}`);
 
@@ -56,6 +59,7 @@
 		let propHeight = height / 3840;
 		console.log(`--> ${propWidth} ${propHeight}`);
 		propScale = Math.min(propWidth, propHeight);
+		scale.val = propScale;
 
 		mainDom.style.transform = `scale(${propScale})`;
 	});

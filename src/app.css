@@ -6,10 +6,14 @@ html {
 	scroll-behavior: smooth;
 }
 body {
-  overscroll-behavior: none;
-  touch-action: none;
+	overscroll-behavior: none;
+	touch-action: none;
 }
 
-.psv-navbar{
+.psv-navbar {
 	display: none;
+}
+
+:root {
+	--margin-top: 230px;
 }
