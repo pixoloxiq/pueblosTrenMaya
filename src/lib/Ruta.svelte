@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { onLanguageChange, lan, data, tauri, imgList } = $props();
+	let { onLanguageChange, lan, data, tauri, doStandBy } = $props();
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { register } from 'swiper/element/bundle';
@@ -32,12 +32,7 @@
 
 	let progresSwipe = $state(0);
 	let sizeClass = $state('');
-	let rutaInstruccion: HTMLElement;
-	let rutaLinea: HTMLElement;
-	let logosInstrucciones: HTMLElement;
 	let simbologia: HTMLElement;
-	let puntoMapa: HTMLElement;
-	let infoVentana: HTMLElement;
 	let slideIndex = $state(0);
 	let classInstrucciones = $state('');
 	let swiperEl: any;
@@ -51,6 +46,9 @@
 		mapa: '',
 	});
 	let name = $derived(currentPlace?.nombre[lan]);
+
+	let standbyTime = data.standbyTime * 1000;
+	let timer: number | undefined;
 
 	$inspect(name);
 
@@ -100,6 +98,7 @@
 		slideIndex = e.detail[0].activeIndex;
 
 		currentPlace = data.lugares.find((lugar: any) => lugar.indexSlide == slideIndex);
+		resetTimer();
 
 		//if (currentPlace) console.log(currentPlace);
 		//goto('/#item-' + lugarIndex);
@@ -190,7 +189,8 @@
 		//rutaInstruccion.style.opacity = `${opacity}`;
 		//logosInstrucciones.style.opacity = `${opacity}`;
 		//rutaLinea.style.opacity = `${1 - opacity}`;
-		simbologia.style.opacity = `${1 - opacity}`;
+		console.log(progresSwipe, 1 - opacity);
+		//simbologia.style.opacity = `${1 - opacity}`;
 		//infoVentana.style.opacity = `${1 - opacity}`;
 	});
 	/* $effect(() => {
@@ -204,7 +204,25 @@
 	};
 	onMount(() => {
 		swiperEl = document.querySelector('swiper-container');
+		resetTimer();
 	});
+
+	const resetTimer = () => {
+		//console.log(e.detail[0].progress);
+		/* const [swiper, progress] = e.detail;
+	
+
+		slideProgress.set(progress); */
+		clearTimeout(timer);
+		//	timer?.clearTimeout();
+		timer = setTimeout(() => {
+			if (swiperEl) {
+				doStandBy();
+				swiperEl.swiper.slideTo(0, 500);
+				console.log('resetTimer');
+			}
+		}, standbyTime);
+	};
 </script>
 
 <div class="flex justify-center w-full ruta-main">
@@ -240,47 +258,48 @@
 </div> -->
 
 {#if false}
-	<div bind:this={logosInstrucciones} class="flex justify-center w-full pointer-events-none logos-inst">
+	<div class="flex justify-center w-full pointer-events-none logos-inst">
 		<img class="logoMexicana" src={logoMexicana} alt="Logo Mexicana" />
 		<img class="logoTrenMayaSm" src={logoTrenMayaSm} alt="Logo Tren Maya" />
 		<img class="logoHotelesG" src={logoHotelesG} alt="Logo Hoteles Gafsacomm" />
 	</div>
 {/if}
-<div bind:this={simbologia} class="absolute w-full pointer-events-none simbologia">
-	<div class="relative simb">
-		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconPM_sim} alt="Logo Pueblo Magico" />{data.textos.pm[lan]}
-		</div>
-		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconE_sim} alt="Logo Estacion" />{data.textos.e[lan]}
-		</div>
-		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconAG_sim} alt="Logo Aeropuerto Gafsacomm" />{data.textos.ag[lan]}
-		</div>
-		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconSA_sim} alt="Logo Sitio arqueologico" />{data.textos.sa[lan]}
-		</div>
-		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconHG_sim} alt="Logo Hoteles Gafsacomm" />{data.textos.hg[lan]}
-		</div>
-		<div class="relative flex items-center font-semibold align-middle simIcon">
-			<img src={iconM_sim} alt="Logo Hoteles Gafsacomm" />{data.textos.m[lan]}
-		</div>
-	</div>
-	<div class="absolute flex justify-center logos">
-		<img class="simlogoTrenMayaSm" src={logoTrenMayaSm} alt="Logo Tren Maya" />
-		<img class="simlogoHotelesG" src={logoHotelesG} alt="Logo Hoteles Gafsacomm" />
-		<img class="simlogoMexicana" src={logoMexicana} alt="Logo Mexicana" />
-	</div>
-</div>
+
 {#if slideIndex == 0}
-	<div in:fade={{ duration: 250 }} out:fade={{ duration: 250 }} bind:this={rutaInstruccion} class="flex justify-center w-full pointer-events-none ruta-inst">
+	<div in:fade={{ duration: 250 }} out:fade={{ duration: 250 }} class="flex justify-center w-full pointer-events-none ruta-inst">
 		<img class="ruta" src={imgRuta} alt="Ruta" />
 	</div>
 {/if}
 {#if slideIndex > 0}
-	<img in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 250 }} class="absolute h-fit fondo" src={fondo} alt="fondo" />
-	<div in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 250 }} bind:this={rutaLinea} class="top-0 flex justify-center w-full ruta-simb">
+	<div in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 50 }} class="absolute z-10 w-full pointer-events-none simbologia">
+		<div class="relative simb">
+			<div class="relative flex items-center font-semibold align-middle simIcon">
+				<img src={iconPM_sim} alt="Logo Pueblo Magico" />{data.textos.pm[lan]}
+			</div>
+			<div class="relative flex items-center font-semibold align-middle simIcon">
+				<img src={iconE_sim} alt="Logo Estacion" />{data.textos.e[lan]}
+			</div>
+			<div class="relative flex items-center font-semibold align-middle simIcon">
+				<img src={iconAG_sim} alt="Logo Aeropuerto Gafsacomm" />{data.textos.ag[lan]}
+			</div>
+			<div class="relative flex items-center font-semibold align-middle simIcon">
+				<img src={iconSA_sim} alt="Logo Sitio arqueologico" />{data.textos.sa[lan]}
+			</div>
+			<div class="relative flex items-center font-semibold align-middle simIcon">
+				<img src={iconHG_sim} alt="Logo Hoteles Gafsacomm" />{data.textos.hg[lan]}
+			</div>
+			<div class="relative flex items-center font-semibold align-middle simIcon">
+				<img src={iconM_sim} alt="Logo Hoteles Gafsacomm" />{data.textos.m[lan]}
+			</div>
+		</div>
+		<div class="absolute flex justify-center logos">
+			<img class="simlogoTrenMayaSm" src={logoTrenMayaSm} alt="Logo Tren Maya" />
+			<img class="simlogoHotelesG" src={logoHotelesG} alt="Logo Hoteles Gafsacomm" />
+			<img class="simlogoMexicana" src={logoMexicana} alt="Logo Mexicana" />
+		</div>
+	</div>
+	<img in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 150 }} class="absolute h-fit fondo" src={fondo} alt="fondo" />
+	<div in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 150 }} class="top-0 flex justify-center w-full ruta-simb">
 		<!-- <div class="relative top-0 w-[500px] h-full bg-lightGreen intersect left-1/2"></div> -->
 		<RutaLinea {onLanguageChange} {lan} {data} {tauri} {updateSlide}></RutaLinea>
 	</div>
@@ -298,12 +317,7 @@
 			<button aria-label="Switch to english" type="button" class="language-btn-en" onclick={switchLanguageEn}></button>
 		</div>
 	</div>
-	<div
-		in:fade={{ duration: 250, delay: 300 }}
-		out:fade={{ duration: 250 }}
-		bind:this={infoVentana}
-		class="absolute flex justify-center w-full pointer-events-none info"
-	>
+	<div in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 100 }} class="absolute flex justify-center w-full pointer-events-none info">
 		<div class="ventanaInfo">
 			<img class="mapa" src={mapa} alt="Mapa" />
 			<!-- <img class="mapa" src={currentPlace.mapa} alt="MapaPosition" /> -->
@@ -335,7 +349,7 @@
 	</div>
 	{#if currentPlace.img360}
 		{#key currentPlace}
-			<Panorama src={currentPlace?.img360} {tauri}></Panorama>
+			<Panorama {resetTimer} src={currentPlace?.img360} {tauri}></Panorama>
 		{/key}
 	{/if}
 {/if}

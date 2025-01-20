@@ -1,4 +1,5 @@
 {
+	"standbyTime": 60,
 	"textos": {
 		"instrucciones": {
 			"es": "Selecciona tu idioma:<br /> presiona ES para español",
@@ -49,10 +50,10 @@
 			},
 			"descripcion": {
 				"es": "<p>En Palenque, Chiapas, la ruta del Tren Maya tiene uno de sus puntos de arranque. En el terreno del antiguo aeropuerto se localiza este desarrollo urbano-ecológico, con la estación como primera estructura de una nueva comunidad sustentable, punto de partida para disfrutar del esplendor de la selva, cascadas, parques y comunidades mayas. Su arquitectura está inspirada en el arte antiguo y arquitectura vernácula.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>This station serves as one of the starting points of the Mayan Train route and is located in Palenque, Chiapas. It is situated on the grounds of the old airport, where an urban-ecological development is taking shape. The Train Station is the first structure of this new sustainable community, providing a gateway to enjoy the splendors of the jungle, waterfalls, parks, and Mayan communities. Its architecture is inspired by ancient art and vernacular architecture.</p>"
 			},
 
-			"imagen": "01_PALENQUE/Estación Palenque.jpg",
+			"imagen": "01_PALENQUE/Estacion Palenque.jpg",
 			"img360": "",
 			"icono": "palenque.svg",
 			"mapa": "e_palenque.svg",
@@ -89,7 +90,7 @@
 			},
 			"descripcion": {
 				"es": "<p>Es la primera parada sugerida de la estación Palenque. La zona arqueológica toma su nombre de la comunidad vecina fundada a finales del siglo XVI: Santo Domingo de Palenque. Es uno de los sitios mayas más impresionantes y mejor conservados, reconocida por su importancia histórica, arquitectónica y cultural.</p><p>Forma parte de la Lista de Patrimonio Mundial como uno de los principales sitios mayas y forma parte del Patrimonio de la Humanidad de la UNESCO desde 1987.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>The first suggested stop from Palenque Train Station. The archaeological zone is named after the neighboring community founded in the late 16th century: Santo Domingo de Palenque. It is one of the most impressive and best-preserved Mayan sites, recognized for its historical, architectural, and cultural importance. It is one of the central Mayan sites on the World Heritage List and has been a UNESCO site since 1987.</p>"
 			},
 			"imagen": "01_PALENQUE/ZONA ARQUEOLOGICA DE PALENQUE.jpg",
 			"img360": "otros/foto-1-palenque_ret_color.jpg",
@@ -108,7 +109,7 @@
 			},
 			"descripcion": {
 				"es": "<p>Su cercanía con la estación Palenque (9 km), con el Pueblo Mágico (5.4 km) y con el Aeropuerto Internacional de Palenque (10 km), le otorgan una ubicación privilegiada en el corazón del sureste de México.</p><p>El Hotel se encuentra en un área exclusiva, rodeado por naturaleza y cultura. Combina el acceso al sitio arqueológico con la belleza natural de la selva chiapaneca, que permite explorar las ruinas de manera responsable.</p><p>Palenque es un excelente punto de partida para explorar la arqueología y la biodiversidad de México, ya que está compuesto por pueblos originarios como el chol, tzeltal y lacandón.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>Its proximity to Palenque Train Station (9 km), Magic Town (5.4 km), and Palenque International Airport (10 km) gives it a privileged location in the heart of southeastern Mexico. The Hotel is in an exclusive area, surrounded by nature and culture. It combines access to the archaeological site with the natural beauty of the Chiapas jungle, allowing responsible exploration of the ruins. Palenque is an excellent starting point to explore Mexico's archaeology and biodiversity because it comprises Indigenous peoples such as the Chol, Tzeltal, and Lacandón.</p>"
 			},
 			"imagen": "01_PALENQUE/HOTEL TREN MAYA PALENQUE.jpg",
 			"img360": "",
@@ -127,15 +128,15 @@
 			},
 			"descripcion": {
 				"es": "<p>En esta estación se puede conocer el imponente río Usumacinta, diversos cenotes y la zona arqueológica de Pomoná.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>At this station, you can discover the imposing Usumacinta River, various cenotes, and the Pomoná archaeological zone.</p>"
 			},
 
-			"imagen": "02_BOCA DEL CERRO/",
+			"imagen": "02_BOCA DEL CERRO/Estacion-Boca-del-Cerro.jpg",
 			"img360": "",
 			"icono": "boca_del_cerro.svg",
 			"mapa": "e_boca_del_cerro.svg",
 			"px": 202,
-			"py": 0
+			"py": -1800
 		},
 		{
 			"edo": "TABASCO",
@@ -147,10 +148,10 @@
 			},
 			"descripcion": {
 				"es": "<p>Fue un emporio agrícola que alcanzó su apogeo en el Clásico tardío (600 a 900 d.C.). Durante ese periodo aumentó la actividad arquitectónica con influencias de Comalcalco y Palenque, mediante la creación de monumentos escultóricos como estelas, tableros y alfardas.</p><p>En el Museo de Sitio se presenta el acervo recuperado, además de una colección que muestra piezas de la región circunvecina. También se conservan las huellas de su cultura en los tableros con inscripciones y esculturas.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>It was an agricultural emporium that peaked in the Late Classic period (600 to 900 AD). During that period, architectural activity increased with influences from Comalcalco and Palenque through the creation of sculptural monuments such as stelae, panels, and buttresses. The Site Museum presents the recovered collection, along with a collection showing pieces from the surrounding region. The traces of their culture are also preserved in panels with inscriptions and sculptures.</p>"
 			},
 
-			"imagen": "02_BOCA DEL CERRO/ZONA ARQUEOLÓGICA DE POMONÁ.jpg",
+			"imagen": "02_BOCA DEL CERRO/ZONA ARQUEOLOOGICA DE POMONA.jpg",
 			"img360": "",
 			"icono": "",
 			"mapa": "e_boca_del_cerro.svg",
@@ -205,9 +206,9 @@
 			},
 			"descripcion": {
 				"es": "<p>En Candelaria se encuentra el río con este mismo nombre, que está lleno de tonalidades en colores azules y verdes que alimentan a numerosos cenotes y cascadas. La zona está rodeada de vegetación tropical que acompaña la zona arqueológica el Tigre. Se puede hacer un recorrido por cascadas, ríos, cenotes y lagunas, con una magnífica vista de garzas, pericos, monos y demás fauna silvestre.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>In Candelaria, you'll discover a river that shares its name, filled with blue and green hues that feed numerous cenotes and waterfalls. The area is surrounded by tropical vegetation and is home to the El Tigre archaeological zone. You can tour waterfalls, rivers, cenotes, and lagoons, all while enjoying magnificent views of herons, parrots, monkeys, and a variety of other wildlife.</p>"
 			},
-			"imagen": "05_CANDELARIA/",
+			"imagen": "05_CANDELARIA/ESTACION-CANDELARIA.jpg",
 			"img360": "",
 			"icono": "candelaria.svg",
 			"mapa": "e_candelaria.svg",
@@ -224,7 +225,7 @@
 			},
 			"descripcion": {
 				"es": "<p>El Pueblo Mágico de Candelaria debe su nombre al Río Candelaria que recorre el municipio. Es un santuario ecoturístico y un oasis para el disfrute de la naturaleza, con una vegetación es abundante y espesa. Ideal para realizar turismo ecológico, una modalidad que le da relevancia a la preservación y la contemplación de los entornos silvestres. Manglares, pastizales y abundante vegetación de tipo tropical dan forma al entorno natural El sitio arqueológico El Tigre, es otro de sus atractivos junto a centros ceremoniales mayas de la región como El Naranjo, Peje Lagarto, entre otros.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>The Magic Town of Candelaria, named after the Candelaria River that runs through the municipality, is an ecotourism sanctuary and an oasis for enjoying nature. Its thick vegetation makes it ideal for ecological tourism, a modality that emphasizes preserving and contemplating wild environments. Mangroves, grasslands, and abundant tropical vegetation shape the natural environment. The El Tigre archaeological site is another attraction, along with Mayan ceremonial centers in the region, such as El Naranjo, Peje Lagarto, and others.</p>"
 			},
 			"imagen": "05_CANDELARIA/EL-TIGRE.jpg",
 			"img360": "",
@@ -282,9 +283,9 @@
 			},
 			"descripcion": {
 				"es": "<p>En esta estación encontrarás la antigua ciudad maya Edzná, que cuenta con un impresionante centro ceremonial del periodo Preclásico Maya, la Gran Acrópolis con el majestuoso Castillo principal de cinco niveles que posee detalles de glifos en sus escaleras, así como la Pequeña Acrópolis, el Palacio y el Templo de las Máscaras.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>At this station, you'll find the ancient Mayan city of Edzná, which has an impressive ceremonial center from the Mayan Preclassic period, the Great Acropolis with the majestic five-level central Castle that has glyph details on its stairs, as well as the Small Acropolis, the Palace, and the Temple of Masks.</p>"
 			},
-			"imagen": "08_EDZNA/ESTACION EDZNA (1).jpg",
+			"imagen": "08_EDZNA/Estacion-Edzna.jpg",
 			"img360": "",
 			"icono": "edzna.svg",
 			"mapa": "e_edzna.svg",
@@ -301,7 +302,7 @@
 			},
 			"descripcion": {
 				"es": "<p>Fue uno de los sitios más importantes de la cultura maya durante el Clásico tardío (700-900 d.C.). Su nombre, “Casa de los itzaes”, es de origen chontal. Edzná se convirtió en una poderosa capital que contiene numerosos edificios monumentales, muestra de la concentración del poder político, económico y religioso. Se pueden apreciar los diversos estilos arquitectónicos identificados como Petén, Chenes y Puuc.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>It was one of the most important sites of Mayan culture during the Late Classic period (700-900 AD). Its name, \"House of the Itzaes,\" is of Chontal origin. Edzná became a powerful capital containing numerous monumental buildings, demonstrating the concentration of political, economic, and religious power. Various architectural styles, such as Petén, Chenes, and Puuc, can be appreciated.</p>"
 			},
 			"imagen": "08_EDZNA/ZONA-ARQUEOLOGICA-DE-EDZNA.jpg",
 			"img360": "",
@@ -320,7 +321,7 @@
 			},
 			"descripcion": {
 				"es": "<p>Complejo asentado en el valle de Edzná. Su ubicación privilegiada, lo separa sólo 1 km de la zona arqueológica de Edzná, 16.3 km de la estación del Tren Maya Edzná y 45.5 km del aeropuerto internacional.</p><p>El Hotel ofrece un balance perfecto entre tradición, cultura y naturaleza, con servicios de calidad.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>Hotel nestled in the Edzná valley. Its privileged location separates it only 1 km from the Edzná archaeological zone, 16.3 km from Edzná Train Station, and 45.5 km from the international airport. The Hotel offers a perfect balance between tradition, culture, and nature, with quality services.</p>"
 			},
 			"imagen": "08_EDZNA/HOTEL-TREN-MAYA-EDZNA.jpg",
 			"img360": "",
@@ -339,9 +340,9 @@
 			},
 			"descripcion": {
 				"es": "<p>Hopelchén es el punto de partida para conocer los sitios arqueológicos que forman esta ruta: Santa Rosa Xtampak, Tabasqueño, Hochob y Dzibilnocac, que definen el estilo arquitectónico maya caracterizado por la decoración de sus fachadas con mascarones zoomorfos y por sus templos- palacios más bajos en comparación con otras regiones del mundo maya.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>Hopelchén is the starting point for learning about the archaeological sites that form this route: Santa Rosa Xtampak, Tabasqueño, Hochob, and Dzibilnocac. These sites define the Mayan architectural style, characterized by the decoration of their facades with zoomorphic masks and their lower palace temples compared to other regions of the Mayan world.</p>"
 			},
-			"imagen": "08_EDZNA/",
+			"imagen": "08_EDZNA/HOPELCHEN.jpg",
 			"img360": "",
 			"icono": "edzna.svg",
 			"mapa": "sa_chenes.svg",
@@ -415,7 +416,7 @@
 			},
 			"descripcion": {
 				"es": "<p>En esta localidad destaca la producción de tejidos, sombreros de jipi y nunkini, así como la fabricación de petates. Sus principales puntos de interés son las antiguas haciendas, la Isla Arena, el Cenote y el Canal del Remate. Además, la zona ofrece oportunidades para el ecoturismo y parques naturales como las reservas ecológicas Río de Celestún y los Petenes. También, la región cuenta con lagunas y esteros, como La Laguna Yaltón y Bocana del Estero de Celestún.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>In this town, the production of weavings, jipi, and nunkini (palm) hats and the manufacture of petates are outstanding. Its main points of interest are the old haciendas, Isla Arena, the Cenote, and the Remate Canal. In addition, the area offers opportunities for ecotourism and natural parks such as the Río de Celestún and Petenes ecological reserves. Also, the region has lagoons and estuaries, such as La Laguna Yaltón and Bocana del Estero de Celestún.</p>"
 			},
 			"imagen": "12_CALKINI/ESTACION-CALKINI.jpg",
 			"img360": "",
@@ -434,9 +435,9 @@
 			},
 			"descripcion": {
 				"es": "<p>Ubicado cerca de la Zona Arqueológica de Nuevo Uxmal. Lugar que promueve una cultura sustentable que considera primordial la convivencia armónica con la naturaleza. Asimismo, cuenta con centros de transferencia modal, pasos de fauna y senderos. Este complejo ofrece servicio de hospedaje y ofrece actividades ecoturísticas como senderismo y avistamiento de fauna silvestre y estructuras mayas.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>Situated close to the Nuevo Uxmal Archaeological Zone, this hotel complex promotes a sustainable culture that emphasizes harmonious coexistence with nature. It features modal transfer centers, wildlife crossings, and various trails. Guests can enjoy lodging services and participate in ecotourism activities such as hiking, wildlife watching, and exploring Mayan structures.</p>"
 			},
-			"imagen": "13_MAXCANU/HOTEL-NUEVO-UXMAL.jpg",
+			"imagen": "13_MAXCANU/HOTEL_NUEVO_UXMAL.jpg",
 			"img360": "",
 			"icono": "calkini.svg",
 			"mapa": "hg_nuevo_uxmal.svg",
@@ -453,7 +454,7 @@
 			},
 			"descripcion": {
 				"es": "<p>Urbe deslumbrante por la calidad de su arquitectura y la armonía de su trazo. Fue sede del poder económico y político de una amplia región. Presenta conjuntos formados por varios edificios bajos y horizontales como culto al agua, la tierra, el Sol y Venus.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>Dazzling city for its architecture's quality and its layout's harmony. It was the seat of economic and political power of a vast region. Features complexes formed by several low and horizontal buildings as worship to water, earth, Sun, and Venus.</p>"
 			},
 			"imagen": "13_MAXCANU/ZONA-ARQUEOLOGICA-DE-UXMAL.jpg",
 			"img360": "",
@@ -472,7 +473,7 @@
 			},
 			"descripcion": {
 				"es": "<p>Es uno de los asentamientos más relevantes de la región. Los grupos del Este y el Noroeste tienen patrones de diseño y organización del espacio, propios de la región Puuc, como la construcción de edificios de múltiples cuartos organizados alrededor de patios o plazas.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>It is one of the most relevant settlements in the region. The East and Northwest groups have design patterns and space organization typical of the Puuc region, such as the construction of multiple-room buildings organized around courtyards or plazas.</p>"
 			},
 			"imagen": "13_MAXCANU/ZONA ARQUEOLOGICA DE KABAH.jpg",
 			"img360": "",
@@ -529,7 +530,7 @@
 			},
 			"descripcion": {
 				"es": "<p>La capital yucateca conjuga la modernidad con un rico pasado histórico. Es el centro económico y cultural del sureste de México. Durante mucho tiempo fue llamada “la ciudad blanca”. Fundada por Francisco de Montejo en 1542, la ciudad se caracteriza por su arquitectura virreinal y francesa.</p>",
-				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
+				"en": "<p>The Yucatecan capital blends modernity with a rich historical past. It is the economic and cultural hub of southeastern Mexico. For a long time, it was called \"the white city.\" Founded by Francisco de Montejo in 1542, the city is characterized by its colonial and French architecture.</p>"
 			},
 			"imagen": "15_MERIDA TEYA/ESTACION-MERIDA-TEYA.jpg",
 			"img360": "",
@@ -588,7 +589,7 @@
 				"es": "<p>Conocida como la Ciudad de las Tres Culturas por el sincretismo entre lo maya, lo español y lo contemporáneo, Izamal destaca por sus fachadas amarillas y blancas, su arquitectura colonial y sus centros ceremoniales. Es un destino que combina historia, cultura y belleza natural.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "17_IZAMAL/ESTACION IZAMAL.jpg",
+			"imagen": "17_IZAMAL/ESTACION_IZAMAL.jpg",
 			"img360": "",
 			"icono": "izamal.svg",
 			"mapa": "e_izamal.svg",
@@ -664,8 +665,8 @@
 				"es": "<p>Complejo que fomenta la biodiversidad natural y cultural, ubicado a sólo 2.4 km de la Zona Arqueológica de Chichén-Itzá, uno de los principales sitios arqueológicos de la Península de Yucatán, declarado Patrimonio de la Humanidad por la UNESCO. Cuenta con estacionamiento, restaurante, bar, alberca, cafetería, tienda de regalos, gimnasio, temazcal, spa y lavandería.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "18_CHICHEN ITZA/",
-			"img360": "",
+			"imagen": "18_CHICHEN ITZA/ZONA-ARQUEOLOGICA-CHICHEN-ITZA.jpg",
+			"img360": "HOTEL TREN MAYA CHICHEN ITZA.jpg",
 			"icono": "chichen_itza.svg",
 			"mapa": "hg_chichen_itza.svg",
 			"px": 615,
@@ -683,7 +684,7 @@
 				"es": "<p>Ciudad histórica fundada en el siglo XVI, escenario de la Guerra de Castas y la Revolución Mexicana, considerada un Pueblo Mágico. Se puede disfrutar del Convento de San Bernardino de Siena, el Palacio Municipal, la Iglesia de San Servacio, el Convento de San Bernardino de Siena y diversos cenotes. La ciudad es conocida por su artesanía de piel, henequén, hamacas, tejido de bejuco y piedra.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "19_VALLADOLID/",
+			"imagen": "19_VALLADOLID/ESTACION-VALLADOLID-.jpg",
 			"img360": "",
 			"icono": "valladolid.svg",
 			"mapa": "e_valladolid.svg",
@@ -702,7 +703,7 @@
 				"es": "<p>La antigua Sací fue un notable centro político y religioso, y punto estratégico en la conquista de la península de Yucatán.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "19_VALLADOLID/",
+			"imagen": "19_VALLADOLID/VALLADOLID_PUEBLO_MAGICO.jpg",
 			"img360": "",
 			"icono": "valladolid.svg",
 			"mapa": "e_valladolid.svg",
@@ -721,7 +722,7 @@
 				"es": "<p>El recinto amurallado contiene templos, palacios, plazas, un baño de vapor, altares, adoratorios y estelas. La arquitectura muestra influencias de los estilos Petén, Chenes, Puuc y Costa Oriental.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "19_VALLADOLID/ZONA ARQUEOLOGICA EK BALAM.jpg",
+			"imagen": "19_VALLADOLID/ZONA_ARQUEOLOGICA_EK_BALAM.jpg",
 			"img360": "",
 			"icono": "valladolid.svg",
 			"mapa": "sa_ek_balam.svg",
@@ -797,7 +798,7 @@
 				"es": "<p>Considerada una de las más bellas islas de aguas tranquilas y hermosos arrecifes de coral. Se puede visitar El Farito, la Isla Contoy y las esculturas submarinas del arrecife Manchones, así como disfrutar del nado con tiburón ballena, recorrer los acantilados, nadar con delfines, escalar la tirolesa o dar paseos en bicicleta.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "22_CANCUN/PUEBLO MAGICO DE ISLA MUJERES.jpg",
+			"imagen": "22_CANCUN/PUEBLO_MAGICO_DE_ISLA_MUJERES.jpg",
 			"img360": "",
 			"icono": "cancun.svg",
 			"mapa": "pm_isla_mujeres.svg",
@@ -854,7 +855,7 @@
 				"es": "<p>Es la isla más grande del Caribe mexicano donde se puede disfrutar de los arrecifes coralinos y la fauna marina. En el Museo de la Isla de Cozumel se puede conocer la historia de la isla.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "24_PLAYA DEL CARMEN/COZUMEL PUEBLO MAGICO.jpg",
+			"imagen": "24_PLAYA DEL CARMEN/COZUMEL_PUEBLO_MAGICO.jpg",
 			"img360": "",
 			"icono": "playa_del_carmen.svg",
 			"mapa": "pm_cozumel.svg",
@@ -949,7 +950,7 @@
 				"es": "<p>El Aeropuerto Internacional de Tulum o Aeropuerto Internacional Felipe Carrillo Puerto, se encuentra situado a 20 kilómetros al suroeste del núcleo urbano de Tulum, dentro del municipio de Felipe Carrillo Puerto. Su misión es ser impulsor del desarrollo turístico, social y comercial, fortaleciendo la conectividad del transporte aéreo regional, nacional e internacional, a través de la prestación de servicios de calidad, competitivos y rentables.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "25_TULUM/",
+			"imagen": "25_TULUM/Aeropuerto-de-Tulum.jpg",
 			"img360": "EstacionTulumAeropuerto001.jpg",
 			"icono": "tulum_aeropuerto.svg",
 			"mapa": "a_tulum.svg",
@@ -968,12 +969,12 @@
 				"es": "<p>La antigua ciudad se fundó cerca de cinco lagos que fueron un factor fundamental para su desarrollo. Cobá centralizó el poder económico y político y controló varios poblados cercanos. Entre sus construcciones más destacadas están el Grupo A o Nohoch Mul que incluyen los mayores edificios de la zona como la Gran Plataforma o Estructura VII, la Estructura I, el Grupo B o Cobá y el Grupo D con sus juegos de pelota.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "25_TULUM/ZONA ARQUEOLOGICA COBA.png",
+			"imagen": "25_TULUM/Zona-Arqueologica-de-Coba.jpg",
 			"img360": "",
 			"icono": "tulum.svg",
 			"mapa": "sa_coba.svg",
 			"px": 742,
-			"py": -1550
+			"py": -190
 		},
 		{
 			"edo": "QUINTANA ROO",
@@ -1025,7 +1026,7 @@
 				"es": "<p>Antiguo pueblo de piratas, hoy considerado Pueblo Mágico. Fue escenario de la Guerra de Castas, de enfrentamientos y asolado por piratas, muestra de ello es el Fuerte de San Felipe. A un costado del pueblo, se encuentra la Laguna de Bacalar.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "29_BACALAR/",
+			"imagen": "29_BACALAR/Estacion-Bacalar.jpg",
 			"img360": "EstacionBacalar01.jpg",
 			"icono": "bacalar.svg",
 			"mapa": "e_bacalar.svg",
@@ -1101,7 +1102,7 @@
 				"es": "<p>En medio de la exuberante naturaleza y con la presencia de los saraguatos y los tucanes, la zona está integrada por una serie de complejos arquitectónicos de carácter ceremonial y residencial, con un estilo propio en la arquitectura, iconografía y producción de cerámica. Entre los edificios más notables está el Templo de los Mascarones.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "31_NICOLAS BRAVO KOHUNLICH/ZONA ARQUEOLOGICA KOHUNLICH.jpg",
+			"imagen": "31_NICOLAS BRAVO KOHUNLICH/ZONA_ARQUEOLOGICA_KOHUNLICH.jpg",
 			"img360": "",
 			"icono": "nicolas_bravo.svg",
 			"mapa": "sa_kohunlich.svg",
@@ -1177,7 +1178,7 @@
 				"es": "<p>Calakmul es una ciudad maya rodeada de la jungla y es uno de los sitios mejor conservados de México. Su estilo arquitectónico corresponde a la Región del Petén. Tiene cinco grandes complejos vinculados a la Gran Plaza Central. Puedes visitar la Reserva de la Biósfera y áreas de protección de flora y fauna.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "33_CALAKMUL/",
+			"imagen": "33_CALAKMUL/ESTACION_CALAKMUL.jpg",
 			"img360": "",
 			"icono": "kalakmul.svg",
 			"mapa": "e_calakmul.svg",
@@ -1196,8 +1197,8 @@
 				"es": "<p>Se encuentra en la espesura de la selva, a sólo 10 km de la zona arqueológica de Calakmul. El hotel permite convivir con la fauna de la región, ya que está inmerso en un área natural protegida y cerca de una de las zonas arqueológicas más importantes del país, declarada Patrimonio Mundial por la UNESCO.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "33_CALAKMUL/",
-			"img360": "",
+			"imagen": "fondo_sitios_0.jpg",
+			"img360": "HotelTrenMayaCalakmul03.jpg",
 			"icono": "kalakmul.svg",
 			"mapa": "e_calakmul.svg",
 			"px": 426,
@@ -1215,7 +1216,7 @@
 				"es": "<p>Es una de las mayores ciudades del mundo maya, donde se han encontrado más de 120 estelas diseminadas entre estructuras y pirámides de grandes dimensiones. Se encuentra dentro de la Reserva de la Biósfera de Calakmul, la segunda más grande de América, que fue inscrita por la UNESCO como Patrimonio Mixto de la Humanidad en 2014.</p><p>El Museo de la Naturaleza y Arqueología de Calakmul, ofrece un panorama muy completo desde la prehistoria y la diversidad natural, hasta los descubrimientos arqueológicos.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "33_CALAKMUL/",
+			"imagen": "33_CALAKMUL/ZONA ARQUEOLOGICA DE CALAKMUL.jpg",
 			"img360": "",
 			"icono": "kalakmul.svg",
 			"mapa": "e_calakmul.svg",
@@ -1234,7 +1235,7 @@
 				"es": "<p>Se conforma por tres grupos arquitectónicos. Destaca la Casa de los Cuatro Reyes con gran riqueza iconográfica y revela el complejo mundo conceptual de los antiguos mayas. Proliferan mascarones del Monstruo de la Tierra, animales, anfibios y jaguares.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
-			"imagen": "33_CALAKMUL/",
+			"imagen": "33_CALAKMUL/ZONA_ARQUEOLOGICA_EK_BALAM.jpg",
 			"img360": "",
 			"icono": "kalakmul.svg",
 			"mapa": "sa_balamku.svg",
@@ -1271,7 +1272,7 @@
 				"en": "MEXICANA"
 			},
 			"descripcion": {
-				"es": "<p>La Aerolínea del Estado Mexicano, S.A. de C.V. ​es una empresa estatal propiedad del gobierno de México, creada el 18 de mayo de 2023, que tras la compra de la marca comercial de la antigua aerolínea, opera como Mexicana de Aviación.</p><p>Inició operaciones con 14 rutas comerciales para promover, explotar y prestar el servicio público de transporte aéreo regular nacional e internacional de pasajeros, carga, correo o una combinación de estos, por cuenta propia o, a través de personas públicas o privadas.</p><p>La aerolínea está a cargo de la Secretaría de la Defensa Nacional) y opera en el Aeropuerto Internacional Felipe Ángeles.</p>",
+				"es": "<p>La Aerolínea del Estado Mexicano, S.A. de C.V. es una empresa estatal propiedad del gobierno de México, creada el 18 de mayo de 2023, que tras la compra de la marca comercial de la antigua aerolínea, opera como Mexicana de Aviación.</p><p>Inició operaciones con 14 rutas comerciales para promover, explotar y prestar el servicio público de transporte aéreo regular nacional e internacional de pasajeros, carga, correo o una combinación de estos, por cuenta propia o, a través de personas públicas o privadas.</p><p>La aerolínea está a cargo de la Secretaría de la Defensa Nacional) y opera en el Aeropuerto Internacional Felipe Ángeles.</p>",
 				"en": "<p>This first station is the paradise of amateurs of archeology, here you will explore the history of gods and world of maya.</p><p>Near this station you will find the archaeological zone of Palenque, property of humanity by the UNESCO since 1987. In the magical pueblo of Palenque you will find artworks inspired by the cosmovision of the prehispanic era, the National Park of Palenque and soon the hotel Tren Maya Palenque, all of them surrounded by flora and fauna that show the beauty and biodiversity that we enjoy in the southern mexican.</p>"
 			},
 			"imagen": "35_MEXICANA/35_01.jpg",

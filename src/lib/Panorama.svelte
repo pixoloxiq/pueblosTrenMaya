@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { src, tauri } = $props();
+	let { src, tauri, resetTimer } = $props();
 	import { Viewer } from '@photo-sphere-viewer/core';
 	import { onMount } from 'svelte';
 	import { getTauriUrl } from '../utils/utils';
@@ -20,6 +20,10 @@
 			viewer.addEventListener('ready', () => {
 				console.log('ready');
 				ready = true;
+			});
+			viewer.addEventListener('position-updated', () => {
+				console.log('PositionUpdatedEvent');
+				resetTimer();
 			});
 		}
 	});

@@ -30,7 +30,9 @@ type Lugar = {
 let image_list: string[] = [];
 
 export const load: PageLoad = async ({ params }) => {
-	if (window.__TAURI_INTERNALS__) {
+	let slideNum = 0;
+	let lugaresFinal: Lugar[] = [];
+	if ((window as any).__TAURI_INTERNALS__) {
 		// Code that runs only in Tauri
 		// For example, calling a Tauri command
 		console.log('TAURI');
@@ -43,14 +45,20 @@ export const load: PageLoad = async ({ params }) => {
 			item.index = index;
 		}); */
 		console.log(resultObject);
+		let data: { standbyTime: number; textos: any; lugares: any[] } = { standbyTime: resultObject.standbyTime, textos: resultObject.textos, lugares: [] };
 
 		for (var i = 0; i < resultObject.lugares.length; i++) {
-			resultObject.lugares[i].index = i + 1;
+			let newIndexSlide = 0;
+			if (resultObject.lugares[i].info === true) {
+				slideNum++;
+				newIndexSlide = slideNum;
+			}
+			data.lugares.push({ ...resultObject.lugares[i], index: i + 1, indexSlide: newIndexSlide });
 		}
-		getImgList();
+		//getImgList();
 
-		console.log(resultObject);
-		return { props: { data: resultObject }, tauri: true, image_list: image_list };
+		console.log(data);
+		return { props: { data: data }, tauri: true };
 		//retur
 
 		//readFile();
@@ -61,9 +69,9 @@ export const load: PageLoad = async ({ params }) => {
 		try {
 			const Post = await import(`../data/pueblos.json`);
 			console.log(Post);
-			let slideNum = 0;
-			let lugaresFinal: Lugar[] = [];
-			let data: { textos: any; lugares: any[] } = { textos: Post.default.textos, lugares: [] };
+			/* let slideNum = 0;
+			let lugaresFinal: Lugar[] = []; */
+			let data: { standbyTime: number; textos: any; lugares: any[] } = { standbyTime: Post.default.standbyTime, textos: Post.default.textos, lugares: [] };
 			for (var i = 0; i < Post.default.lugares.length; i++) {
 				//Post.default.lugares[i].index = i + 1;
 

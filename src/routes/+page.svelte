@@ -17,6 +17,7 @@
 	let boxEl = $state(null);
 	let boxWidth = $state(0);
 	let scale = $state({ val: 1 });
+
 	setContext('scale', scale);
 
 	//console.log(`--> ${homeDirPath}`);
@@ -74,6 +75,10 @@
 		console.log(`--> ${lan}`);
 	};
 
+	const doStandBy = () => {
+		pantalla = 'portada';
+	};
+
 	/* onMount(() => {
     const resizeObserver = new ResizeObserver(entries => {
       // We're only watching one element
@@ -99,7 +104,7 @@
 	{/if}
 	{#if pantalla === 'instrucciones'}
 		<div class="absolute" in:fade={{ duration: 500 }} out:fade={{ duration: 500 }}>
-			<Ruta {onLanguageChange} {lan} data={data.props?.data} tauri={data.tauri} imgList={data.image_list}></Ruta>
+			<Ruta {onLanguageChange} {lan} data={data.props?.data} tauri={data.tauri} {doStandBy}></Ruta>
 			<!-- <Instrucciones {onLanguageChange} {lan} data={data.props.data}></Instrucciones> -->
 		</div>
 	{/if}

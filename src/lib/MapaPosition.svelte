@@ -10,7 +10,7 @@
 	});
 	const getUrl = async (url: string) => {
 		if (tauri) {
-			let newUrl = await getTauriUrl('data/imgs', url);
+			let newUrl = await getTauriUrl('data/mapas', url);
 			console.log(newUrl);
 			//return '/assets/imgs/iconos/' + newUrl;
 			return newUrl;
