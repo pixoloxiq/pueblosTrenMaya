@@ -4,6 +4,7 @@
 	import { fade } from 'svelte/transition';
 	import { register } from 'swiper/element/bundle';
 	import fondo from '../assets/imgs/fondo_sitios_0.jpg';
+	import icon360 from '../assets/imgs/icn_360.svg';
 	import iconAG_sim from '../assets/imgs/icon_a.svg';
 	import iconE_sim from '../assets/imgs/icon_e.svg';
 	import iconHG_sim from '../assets/imgs/icon_hg.svg';
@@ -95,14 +96,21 @@
 		classInstrucciones = e.detail[0].activeIndex == 0 ? 'instrucciones' : '';
 
 		//lugarIndex = Math.max(1, e.detail[0].activeIndex);
-		slideIndex = e.detail[0].activeIndex;
+		//slideIndex = e.detail[0].activeIndex;
 
-		currentPlace = data.lugares.find((lugar: any) => lugar.indexSlide == slideIndex);
+		//currentPlace = data.lugares.find((lugar: any) => lugar.indexSlide == slideIndex);
 		resetTimer();
 
 		//if (currentPlace) console.log(currentPlace);
 		//goto('/#item-' + lugarIndex);
 	};
+
+	const onNextInst = () => {
+		updateSlide(1);
+		slideIndex = 1;
+		currentPlace = data.lugares.find((lugar: any) => lugar.indexSlide == slideIndex);
+	};
+
 	/* 	$effect(() => {
 		//console.log('currentPlace', currentPlace);
 		console.log('cambio');
@@ -201,7 +209,14 @@
 	}); */
 	const updateSlide = (newValue: number) => {
 		swiperEl.swiper.slideTo(newValue);
+		resetTimer();
 	};
+	const updateInfo = (val: number) => {
+		let _currentPlace = data.lugares.find((lugar: any) => lugar.index == val);
+		if (_currentPlace.info) currentPlace = _currentPlace;
+		console.log(_currentPlace.nombre.es);
+	};
+
 	onMount(() => {
 		swiperEl = document.querySelector('swiper-container');
 		resetTimer();
@@ -222,6 +237,11 @@
 				console.log('resetTimer');
 			}
 		}, standbyTime);
+	};
+	const reset = () => {
+		console.log('reset');
+		doStandBy();
+		swiperEl.swiper.slideTo(0, 500);
 	};
 </script>
 
@@ -269,6 +289,7 @@
 	<div in:fade={{ duration: 250 }} out:fade={{ duration: 250 }} class="flex justify-center w-full pointer-events-none ruta-inst">
 		<img class="ruta" src={imgRuta} alt="Ruta" />
 	</div>
+	<button aria-label="siguiente" onclick={onNextInst} class="btn-inst-sig"></button>
 {/if}
 {#if slideIndex > 0}
 	<div in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 50 }} class="absolute z-10 w-full pointer-events-none simbologia">
@@ -301,21 +322,36 @@
 	<img in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 150 }} class="absolute h-fit fondo" src={fondo} alt="fondo" />
 	<div in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 150 }} class="top-0 flex justify-center w-full ruta-simb">
 		<!-- <div class="relative top-0 w-[500px] h-full bg-lightGreen intersect left-1/2"></div> -->
-		<RutaLinea {onLanguageChange} {lan} {data} {tauri} {updateSlide}></RutaLinea>
+		<RutaLinea {onLanguageChange} {lan} {data} {tauri} {updateSlide} {updateInfo}></RutaLinea>
 	</div>
 
-	<div class="absolute z-20 flex justify-start w-full pointer-events-none lan-btn">
+	<div class="absolute z-20 flex justify-between w-full pointer-events-none lan-btn">
 		<div class="pointer-events-auto language-btn glow">
 			<div class="flex h-full">
 				<img src={iconLan} alt="Language Icon" />
 			</div>
 
-			<div class="language-btn-text">
-				ES&nbsp;&nbsp;<span class="boldSelected glow">/&nbsp;&nbsp;EN</span>
+			<div class="italic language-btn-text">
+				{#if lan === 'es'}
+					<span class="boldSelected">ES&nbsp;&nbsp;/</span>&nbsp;&nbsp;EN
+				{:else}
+					ES&nbsp;&nbsp;<span class="boldSelected">/&nbsp;&nbsp;EN</span>
+				{/if}
 			</div>
 			<button aria-label="Cambiar a español" type="button" class="language-btn-es" onclick={switchLanguageEs}></button>
 			<button aria-label="Switch to english" type="button" class="language-btn-en" onclick={switchLanguageEn}></button>
 		</div>
+		{#if currentPlace.img360}
+			<div class="pano-indicator">
+				<div class="flex items-center justify-center h-full align-middle pano-btn-img">
+					<img src={icon360} alt="pano Icon" />
+				</div>
+				<div class="pano-btn-text">{@html data.textos.panorama[lan]}</div>
+			</div>
+		{/if}
+		<button aria-label="Regresar" onclick={reset} class="flex content-center justify-end pointer-events-auto reset-btn">
+			<span class="boldSelected">{data.textos.reiniciar[lan]}</span>
+		</button>
 	</div>
 	<div in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 100 }} class="absolute flex justify-center w-full pointer-events-none info">
 		<div class="ventanaInfo">
@@ -409,11 +445,24 @@
 			}
 		}
 	}
-
+	.boldSelected {
+		font-weight: 800;
+		font-style: italic;
+		color: #62cdb4;
+	}
 	.swiperContainer {
 		width: 2160px;
 		height: 3840px;
 		z-index: 0;
+	}
+	.btn-inst-sig {
+		position: absolute;
+		top: 0px;
+		height: 3840px;
+		width: 2160px;
+		z-index: 40;
+		opacity: 0;
+		background-color: rebeccapurple;
 	}
 	.lan-btn {
 		display: flex;
@@ -430,7 +479,7 @@
 			justify-content: start;
 			flex-wrap: wrap;
 			position: relative;
-			text-shadow: 0 0 20px #fff;
+			text-shadow: 0 0 20px #62cdb4;
 
 			img {
 				width: 58px;
@@ -462,7 +511,44 @@
 				box-shadow: 0 0 25px #00524c;
 			}
 		}
+		.pano-indicator {
+			position: absolute;
+			top: 0;
+			left: 450px;
+			width: 650px;
+			height: 100px;
+			background-color: #9547f4;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			font-size: 21px;
+			color: white;
+			border-radius: 0 100px 100px 0;
+			.pano-btn-img {
+				width: 220px;
+			}
+			img {
+				height: 64px;
+			}
+		}
 	}
+
+	.reset-btn {
+		width: 350px;
+		height: 100px;
+		display: flex;
+		background-color: #00524c;
+		/* opacity: 0.4; */
+		color: white;
+		font-size: 50px;
+		align-content: center;
+		justify-content: start;
+		flex-wrap: wrap;
+		position: relative;
+		text-shadow: 0 0 20px #62cdb4;
+		padding-left: 40px;
+	}
+
 	.logos-inst {
 		position: absolute;
 		bottom: 246px;
@@ -502,7 +588,7 @@
 		top: 1842px;
 	}
 	.info {
-		top: 1930px;
+		top: 2510px;
 		.ventanaInfo {
 			width: 2016px;
 			height: 894px;

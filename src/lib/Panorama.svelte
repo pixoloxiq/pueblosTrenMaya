@@ -46,12 +46,12 @@
 <style>
 	#viewer {
 		width: 2160px;
-		height: 1500px;
+		height: 1841px;
 		position: absolute;
-		top: 220px;
+		top: 0px;
 		opacity: 0;
 		transition: all 0.2s ease-in-out;
-		z-index: 100;
+		z-index: 10;
 	}
 	#viewer.ready {
 		opacity: 1;

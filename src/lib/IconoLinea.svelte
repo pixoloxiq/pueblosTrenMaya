@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { tipo, label, selected, id } = $props();
+	let { tipo, label, selected, id, clickIcon } = $props();
 	import { fade } from 'svelte/transition';
 
 	import iconAG_sim from '../assets/imgs/icon_a.svg';
@@ -82,10 +82,19 @@
 	export function updateSelected(newValue: boolean) {
 		selected = newValue;
 	}
+	const clickId = (e: any) => {
+		let nodeId = e.target.parentElement.parentElement.id;
+		console.log(nodeId);
+		let id = nodeId.split('-')[1];
+		console.log(id);
+		clickIcon(id);
+	};
 </script>
 
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div id="item-{id}" class="iconoInt icono {selected ? 'selected' : ''} relative iconContainer w-max">
-	<div class="relative w-full h-full">
+	<div class="relative w-full h-full" onclick={clickId} ontouchend={clickId}>
 		{#if selected}
 			<img transition:fade={{ duration: 250 }} src={getIconSel(tipo)} alt="icono estación" class="iconEstacionBg estacion" />
 		{:else}

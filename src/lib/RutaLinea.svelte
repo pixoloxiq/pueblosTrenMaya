@@ -14,7 +14,7 @@
 	let startX: number = $state(0);
 	const scale: { val: number } = getContext('scale');
 
-	let { onLanguageChange, lan, data, tauri, updateSlide } = $props();
+	let { onLanguageChange, lan, data, tauri, updateSlide, updateInfo } = $props();
 
 	let lugarIndex = $state(1);
 	let lugarId = $state('1');
@@ -47,6 +47,16 @@
 		startX = e.pageX - containerParent.offsetLeft;
 		scrollLeft = containerParent.scrollLeft;
 	}
+	function touchIsDown(e: any) {
+		console.log('is down');
+		isDown = true;
+		containerParent.style.scrollSnapType = 'none';
+		containerParent.style.scrollBehavior = 'auto';
+		const touch = e.touches[0];
+		console.log(`touch.clientX ${touch.clientX}`);
+		startX = touch.clientX - containerParent.offsetLeft;
+		scrollLeft = containerParent.scrollLeft;
+	}
 	function mouseUp(e: any) {
 		console.log('is up');
 
@@ -54,6 +64,7 @@
 		console.log(lugarIndex);
 		if (lugarIndex == 0) {
 			updateSlide(0);
+			updateInfo(0);
 			return;
 		}
 
@@ -61,6 +72,7 @@
 			let slideIndex = data.lugares[lugarIndex - 1]?.indexSlide;
 			waitAndRun(150, () => {
 				updateSlide(slideIndex);
+				updateInfo(lugarIndex);
 			});
 			let myElement = document.getElementById('item-' + lugarIndex);
 			myElement?.scrollIntoView({ inline: 'center', block: 'center', behavior: 'smooth' });
@@ -70,13 +82,14 @@
 			containerParent.style.scrollBehavior = 'smooth';
 		}); */
 	}
+
 	function mouseLeave(e: any) {
 		console.log('is leave');
 		isDown = false;
-		let slideIndex = data.lugares[lugarIndex - 1]?.indexSlide;
+		/* let slideIndex = data.lugares[lugarIndex - 1]?.indexSlide;
 		waitAndRun(150, () => {
 			updateSlide(slideIndex);
-		});
+		}); */
 
 		/* 	waitAndRun(50, () => {
 			containerParent.style.scrollSnapType = 'x proximity';
@@ -88,7 +101,19 @@
 			e.preventDefault();
 			//Move vertcally
 			const x = e.pageX - containerParent.offsetLeft;
-			const walkX = (x - startX) * 5 * scale.val;
+			const walkX = ((x - startX) * 1) / scale.val;
+			//console.log(walkX, scrollLeft);
+			containerParent.scrollLeft = scrollLeft - walkX;
+		}
+	}
+	function touchMove(e: TouchEvent) {
+		if (isDown) {
+			e.preventDefault();
+			//Move vertcally
+			const touch = e.touches[0];
+			console.log(`touch.clientX ${touch.clientX}`);
+			const x = touch.clientX - containerParent.offsetLeft;
+			const walkX = ((x - startX) * 1) / scale.val;
 			//console.log(walkX, scrollLeft);
 			containerParent.scrollLeft = scrollLeft - walkX;
 		}
@@ -133,7 +158,7 @@
 			
 			observer.observe(estacionElement);
 		} */
-		const observer = new IntersectionObserver(observeFunction, { threshold: [0.5], rootMargin: '0px -40% 0px -40%' });
+		const observer = new IntersectionObserver(observeFunction, { threshold: [0.5], root: containerParent, rootMargin: '0px -40% 0px -40%' });
 		estacionElements.forEach((element) => {
 			observer.observe(element);
 		});
@@ -157,6 +182,20 @@
 		}
 	};
 
+	const clickIcon = (id: number) => {
+		return;
+		var myElement = document.getElementById('item-' + id);
+		console.log(myElement);
+		updateInfo(id);
+		myElement?.scrollIntoView({ inline: 'center', block: 'center', behavior: 'smooth' });
+		let slideIndex = data.lugares[id - 1]?.indexSlide;
+		waitAndRun(150, () => {
+			updateSlide(slideIndex);
+		});
+
+		//lugarIndex = id;
+	};
+
 	//$inspect(isDown);
 	$inspect(lugarIndex);
 </script>
@@ -169,8 +208,11 @@
 <div
 	bind:this={containerParent}
 	onmousedown={mouseIsDown}
+	ontouchstart={touchIsDown}
 	onmouseup={mouseUp}
+	ontouchend={mouseUp}
 	onmousemove={mouseMove}
+	ontouchmove={touchMove}
 	onmouseleave={mouseLeave}
 	class="z-10 w-full overflow-x-hidden scroll-smooth ruta-linea lineContainer"
 >
@@ -188,7 +230,15 @@
 					alt="icono estación"
 					class="iconEstacionBg estacion {lugarIndex === lugar.id ? 'selected' : ''}"
 				/> -->
-					<IconoEstacion src={lugar.icono} id={lugar.index} {tauri} selected={lugarIndex === lugar.index} label={lugar.nombre[lan]} active={lugar.info}
+					<IconoEstacion
+						{clickIcon}
+						src={lugar.icono}
+						id={lugar.index}
+						{tauri}
+						enabled={lugar.info}
+						selected={lugarIndex === lugar.index}
+						label={lugar.nombre[lan]}
+						active={lugar.info}
 					></IconoEstacion>
 				</div>
 				<Tren edo={lugar.edo} length={getTrenLength(i)} />
@@ -199,7 +249,7 @@
 					alt="icono sitio arqueologico"
 					class=" sa {lugarIndex === lugar.id ? 'selected' : ''}"
 				/> -->
-					<IconoLinea tipo={lugar.tipo} selected={lugarIndex === lugar.index} id={lugar.index} label={lugar.nombre[lan]}></IconoLinea>
+					<IconoLinea {clickIcon} tipo={lugar.tipo} selected={lugarIndex === lugar.index} id={lugar.index} label={lugar.nombre[lan]}></IconoLinea>
 				</div>
 				<Tren edo={lugar.edo} length={2 + Math.round(Math.random() * 1)} />
 			{/if}
@@ -220,10 +270,10 @@
 		white-space: nowrap;
 		height: 3840px;
 		.ruta-linea-graph {
-			top: 3065px;
+			top: 2115px;
 		}
 		.ruta-riel-graph {
-			top: 3103px;
+			top: 2164px;
 		}
 	}
 	.iconContainer {
@@ -232,7 +282,7 @@
 	.lineContainer {
 		scroll-snap-type: x mandatory;
 		.lineaTren {
-			margin-top: 2956px;
+			margin-top: 2010px;
 		}
 
 		/*scroll-snap-points-x: repeat(100%);*/
