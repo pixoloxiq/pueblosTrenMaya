@@ -1,5 +1,6 @@
 <script lang="ts">
-	let { src, tauri, resetTimer } = $props();
+	let { src, tauri, resetTimer, pitch, yaw } = $props();
+	import { AutorotatePlugin } from '@photo-sphere-viewer/autorotate-plugin';
 	import { Viewer } from '@photo-sphere-viewer/core';
 	import { onMount } from 'svelte';
 	import { getTauriUrl } from '../utils/utils';
@@ -12,21 +13,50 @@
 		newSrc = await getUrl(src);
 		if (viewerEl) {
 			let viewer = new Viewer({
+				plugins: [
+					[
+						AutorotatePlugin,
+						{
+							autorotatePitch: `${pitch}deg`,
+						},
+					],
+				],
 				navbar: [],
 				container: viewerEl,
 				panorama: newSrc,
 			});
 
-			viewer.addEventListener('ready', () => {
-				console.log('ready');
-				ready = true;
-			});
-			viewer.addEventListener('position-updated', () => {
-				console.log('PositionUpdatedEvent');
+			viewer.addEventListener(
+				'ready',
+				() => {
+					console.log('ready');
+					ready = true;
+					//if (pitch && yaw ) {
+					console.log(pitch, yaw);
+					/* viewer.rotate({
+						yaw: `${yaw}deg`,
+						pitch: `${pitch}deg`,
+					}); */
+					waitAndRun(50, () => {
+						viewer.rotate({
+							yaw: `${yaw}deg`,
+							pitch: `${pitch}deg`,
+						});
+					});
+				},
+				{ once: true }
+			);
+			viewer.addEventListener('position-updated', ({ position }) => {
+				//console.log('PositionUpdatedEvent');
+				//console.log(`new position is yaw: ${position.yaw} pitch: ${position.pitch}`);
 				resetTimer();
 			});
 		}
 	});
+	async function waitAndRun(n: number, callback: () => void) {
+		await new Promise((resolve) => setTimeout(resolve, n));
+		callback();
+	}
 
 	const getUrl = async (url: string) => {
 		if (tauri) {

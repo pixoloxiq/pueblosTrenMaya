@@ -44,6 +44,8 @@
 		px: 0,
 		py: 0,
 		img360: '',
+		pitch: 0,
+		yaw: 0,
 		mapa: '',
 	});
 	let name = $derived(currentPlace?.nombre[lan]);
@@ -79,6 +81,8 @@
 		px: number;
 		py: number;
 		img360: string;
+		pitch: number;
+		yaw: number;
 		mapa: string;
 	}
 
@@ -385,7 +389,7 @@
 	</div>
 	{#if currentPlace.img360}
 		{#key currentPlace}
-			<Panorama {resetTimer} src={currentPlace?.img360} {tauri}></Panorama>
+			<Panorama {resetTimer} src={currentPlace?.img360} {tauri} pitch={currentPlace?.pitch} yaw={currentPlace?.yaw}></Panorama>
 		{/key}
 	{/if}
 {/if}
