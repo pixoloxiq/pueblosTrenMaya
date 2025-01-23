@@ -12,6 +12,7 @@
 	import iconM_sim from '../assets/imgs/icon_m.svg';
 	import iconPM_sim from '../assets/imgs/icon_pm.svg';
 	import iconSA_sim from '../assets/imgs/icon_sa.svg';
+	import { getTauriUrl } from '../utils/utils';
 
 	import iconM_AG from '../assets/imgs/icn_m_ag.svg';
 	import iconM_E from '../assets/imgs/icn_m_e.svg';
@@ -49,6 +50,8 @@
 		mapa: '',
 	});
 	let name = $derived(currentPlace?.nombre[lan]);
+	let modalVideo = $state(false);
+	let videoSrc = $state('');
 
 	let standbyTime = data.standbyTime * 1000;
 	let timer: number | undefined;
@@ -221,10 +224,23 @@
 		console.log(_currentPlace.nombre.es);
 	};
 
-	onMount(() => {
+	onMount(async () => {
 		swiperEl = document.querySelector('swiper-container');
 		resetTimer();
+		videoSrc = await getUrlVideo(data.videoUrl);
 	});
+
+	const getUrlVideo = async (url: string) => {
+		if (tauri) {
+			let newUrl = await getTauriUrl('data/videos', url);
+			console.log(newUrl);
+			//return '/assets/videos/iconos/' + newUrl;
+			return newUrl;
+		} else {
+			//const imgUrl = new URL('./assets/videos/iconos/' + url, import.meta.url).href;
+			return '/assets/videos/' + url;
+		}
+	};
 
 	const resetTimer = () => {
 		//console.log(e.detail[0].progress);
@@ -246,6 +262,13 @@
 		console.log('reset');
 		doStandBy();
 		swiperEl.swiper.slideTo(0, 500);
+	};
+	const verVideo = () => {
+		console.log('verVideo');
+		modalVideo = true;
+	};
+	const cerrarVideo = () => {
+		modalVideo = false;
 	};
 </script>
 
@@ -391,6 +414,26 @@
 		{#key currentPlace}
 			<Panorama {resetTimer} src={currentPlace?.img360} {tauri} pitch={currentPlace?.pitch} yaw={currentPlace?.yaw}></Panorama>
 		{/key}
+	{/if}
+	<button aria-label="Video" onclick={verVideo} class="flex content-center justify-end pointer-events-auto video-btn">
+		<span class="">{data.textos.botonVideo[lan]}</span>
+	</button>
+	{#if modalVideo}
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
+		<div id="myModal" class="modal" onclick={cerrarVideo}>
+			<div class="modal-content">
+				<span class="close" id="closeModalBtn" onclick={cerrarVideo}>&times;</span>
+
+				<div class="video-container">
+					<!-- svelte-ignore a11y_media_has_caption -->
+					<video autoplay loop>
+						<source src={videoSrc} type="video/mp4" />
+						Tu navegador no soporta el elemento de video.
+					</video>
+				</div>
+			</div>
+		</div>
 	{/if}
 {/if}
 
@@ -671,5 +714,81 @@
 	.pleca {
 		bottom: 0px;
 		position: absolute;
+	}
+	.video-btn {
+		position: absolute;
+		top: 1870px;
+		left: 30px;
+		z-index: 10;
+		width: 480px;
+		height: 168px;
+		background-color: #152441;
+		/* justify-items: center; */
+		display: flex;
+		flex-wrap: wrap;
+		padding: 20px;
+		/* inline-size: 10px; */
+		line-height: 50px;
+		color: white;
+		font-weight: 800;
+		font-style: italic;
+	}
+	.modal {
+		position: fixed;
+		z-index: 20;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgba(0, 0, 0, 0.7);
+	}
+
+	.modal-content {
+		position: relative;
+		margin: auto;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-content: center;
+		/* max-width: 600px; */
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	}
+
+	.close {
+		color: white;
+		position: absolute;
+		top: 1200px;
+		/* right: 25px; */
+		font-size: 110px;
+		font-weight: bold;
+		transition: 0.3s;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: #bbb;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.video-container {
+		position: relative;
+		padding-bottom: 56.25%;
+		height: 0;
+		overflow: hidden;
+		width: 100%;
+		background: black;
+	}
+
+	.video-container video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 </style>

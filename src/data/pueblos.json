@@ -45,8 +45,13 @@
 		"reiniciar": {
 			"es": "REINICIAR",
 			"en": "RESTART"
+		},
+		"botonVideo": {
+			"es": "VIDEO PROMOCIÓN DE HOTELES",
+			"en": "VIDEO PROMOCIÓN DE HOTELES"
 		}
 	},
+	"videoUrl": "Video 2_.mp4",
 
 	"lugares": [
 		{

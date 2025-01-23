@@ -45,7 +45,12 @@ export const load: PageLoad = async ({ params }) => {
 			item.index = index;
 		}); */
 		console.log(resultObject);
-		let data: { standbyTime: number; textos: any; lugares: any[] } = { standbyTime: resultObject.standbyTime, textos: resultObject.textos, lugares: [] };
+		let data: { standbyTime: number; textos: any; videoUrl: string; lugares: any[] } = {
+			standbyTime: resultObject.standbyTime,
+			videoUrl: resultObject.videoUrl,
+			textos: resultObject.textos,
+			lugares: [],
+		};
 
 		for (var i = 0; i < resultObject.lugares.length; i++) {
 			let newIndexSlide = 0;
@@ -71,7 +76,12 @@ export const load: PageLoad = async ({ params }) => {
 			console.log(Post);
 			/* let slideNum = 0;
 			let lugaresFinal: Lugar[] = []; */
-			let data: { standbyTime: number; textos: any; lugares: any[] } = { standbyTime: Post.default.standbyTime, textos: Post.default.textos, lugares: [] };
+			let data: { standbyTime: number; textos: any; videoUrl: string; lugares: any[] } = {
+				standbyTime: Post.default.standbyTime,
+				textos: Post.default.textos,
+				videoUrl: Post.default.videoUrl,
+				lugares: [],
+			};
 			for (var i = 0; i < Post.default.lugares.length; i++) {
 				//Post.default.lugares[i].index = i + 1;
 
