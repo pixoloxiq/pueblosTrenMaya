@@ -45,9 +45,9 @@ export const load: PageLoad = async ({ params }) => {
 			item.index = index;
 		}); */
 		console.log(resultObject);
-		let data: { standbyTime: number; textos: any; videoUrl: string; lugares: any[] } = {
+		let data: { standbyTime: number; textos: any; videos: any; lugares: any[] } = {
 			standbyTime: resultObject.standbyTime,
-			videoUrl: resultObject.videoUrl,
+			videos: resultObject.videos,
 			textos: resultObject.textos,
 			lugares: [],
 		};
@@ -76,10 +76,10 @@ export const load: PageLoad = async ({ params }) => {
 			console.log(Post);
 			/* let slideNum = 0;
 			let lugaresFinal: Lugar[] = []; */
-			let data: { standbyTime: number; textos: any; videoUrl: string; lugares: any[] } = {
+			let data: { standbyTime: number; textos: any; videos: any; lugares: any[] } = {
 				standbyTime: Post.default.standbyTime,
 				textos: Post.default.textos,
-				videoUrl: Post.default.videoUrl,
+				videos: Post.default.videos,
 				lugares: [],
 			};
 			for (var i = 0; i < Post.default.lugares.length; i++) {

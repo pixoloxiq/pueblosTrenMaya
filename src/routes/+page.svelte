@@ -19,6 +19,7 @@
 	let scale = $state({ val: 1 });
 
 	setContext('scale', scale);
+	setContext('tauri', data.tauri);
 
 	//console.log(`--> ${homeDirPath}`);
 
