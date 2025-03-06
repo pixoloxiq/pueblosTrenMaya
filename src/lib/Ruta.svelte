@@ -56,6 +56,8 @@
 
 	let standbyTime = data.standbyTime * 1000;
 	let timer: number | undefined;
+	let lugarIndex = $state(0);
+	let rutaLineaSvelte: any;
 
 	$inspect(name);
 
@@ -115,6 +117,7 @@
 
 	const onNextInst = () => {
 		updateSlide(1);
+		lugarIndex = 1;
 		slideIndex = 1;
 		currentPlace = data.lugares.find((lugar: any) => lugar.indexSlide == slideIndex);
 	};
@@ -246,10 +249,16 @@
 			}
 		}, standbyTime);
 	};
+	const old_reset = () => {
+		console.log('reset');
+
+		swiperEl.swiper.slideTo(0, 500);
+	};
 	const reset = () => {
 		console.log('reset');
-		doStandBy();
-		swiperEl.swiper.slideTo(0, 500);
+		//doStandBy();
+		goToSlide(1);
+		//swiperEl.swiper.slideTo(1, 500);
 	};
 	const verVideo = (url: string) => {
 		console.log('verVideo');
@@ -258,6 +267,85 @@
 	};
 	const cerrarVideo = () => {
 		modalVideo = false;
+	};
+
+	const goToSlide = (index: number) => {
+		console.log(data.lugares);
+		lugarIndex = index;
+		rutaLineaSvelte.moveToSlide(index);
+		let slideIndex = data.lugares[index - 1]?.indexSlide;
+		console.log(`gotoSlide l:${lugarIndex} s: ${slideIndex}`);
+		waitAndRun(100, () => {
+			updateSlide(slideIndex);
+			updateInfo(lugarIndex);
+		});
+	};
+
+	async function waitAndRun(n: number, callback: () => void) {
+		await new Promise((resolve) => setTimeout(resolve, n));
+		callback();
+	}
+
+	const doPrev = () => {
+		console.log(lugarIndex);
+		let indexes = [
+			1, //palenque
+			12, //carrillo puerto
+			20, //calkini
+			31, //chichen
+			41, //pto morelos
+			48, //tulum aeropuerto
+			55, //nicolas bravo
+		];
+		let newLugarIndex = lugarIndex;
+		for (let i = indexes.length - 1; i >= 0; i--) {
+			if (lugarIndex >= indexes[i]) {
+				newLugarIndex = indexes[Math.max(i - 1, 0)];
+				break;
+			}
+		}
+		/* indexes.forEach((index, i) => {
+			if (lugarIndex < index) {
+				newLugarIndex = indexes[Math.max(i - 1, 0)];
+			}
+		}); */
+		console.log(newLugarIndex);
+
+		//lugarIndex = newLugarIndex;
+		//updateSlide(data.lugares[newLugarIndex]?.indexSlide);
+		//updateInfo(newLugarIndex);
+		goToSlide(newLugarIndex);
+		/* if (lugarIndex > 0) {
+			updateSlide(data.lugares[lugarIndex - 1]?.indexSlide);
+			updateInfo(lugarIndex - 1);
+		} */
+	};
+	const doNext = () => {
+		console.log(lugarIndex);
+		let indexes = [
+			1, //palenque
+			12, //carrillo puerto
+			20, //calkini
+			31, //chichen
+			41, //pto morelos
+			48, //tulum aeropuerto
+			55, //nicolas bravo
+		];
+		let newLugarIndex = lugarIndex;
+		for (let i = 0; i < indexes.length; i++) {
+			if (lugarIndex < indexes[i]) {
+				newLugarIndex = indexes[Math.min(i, indexes.length - 1)];
+				break;
+			}
+		}
+		console.log(newLugarIndex);
+		goToSlide(newLugarIndex);
+	};
+	const prevEnabled = () => {
+		return lugarIndex >= 2;
+	};
+	const nextEnabled = () => {
+		return lugarIndex < 55;
 	};
 </script>
 
@@ -338,7 +426,7 @@
 	<img in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 150 }} class="absolute h-fit fondo" src={fondo} alt="fondo" />
 	<div in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 150 }} class="top-0 flex justify-center w-full ruta-simb">
 		<!-- <div class="relative top-0 w-[500px] h-full bg-lightGreen intersect left-1/2"></div> -->
-		<RutaLinea {onLanguageChange} {lan} {data} {tauri} {updateSlide} {updateInfo}></RutaLinea>
+		<RutaLinea bind:this={rutaLineaSvelte} {onLanguageChange} bind:lugarIndex {lan} {data} {tauri} {updateSlide} {updateInfo}></RutaLinea>
 	</div>
 
 	<div class="absolute z-20 flex justify-between w-full pointer-events-none lan-btn">
@@ -368,6 +456,10 @@
 		<button aria-label="Regresar" onclick={reset} class="flex content-center justify-end pointer-events-auto reset-btn">
 			<span class="boldSelected">{data.textos.reiniciar[lan]}</span>
 		</button>
+	</div>
+	<div class="absolute z-20 flex justify-between w-full pointer-events-auto tramos-btn">
+		<button aria-label="anterior" type="button" class="anterior-btn {prevEnabled() ? '' : 'disable'}" onclick={doPrev}> {data.textos.anterior[lan]} </button>
+		<button aria-label="siguiente" type="button" class="siguiente-btn {nextEnabled() ? '' : 'disable'}" onclick={doNext}> {data.textos.siguiente[lan]} </button>
 	</div>
 	<div in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 100 }} class="absolute flex justify-center w-full pointer-events-none info">
 		<div class="ventanaInfo">
@@ -404,26 +496,28 @@
 			<Panorama {resetTimer} src={currentPlace?.img360} {tauri} pitch={currentPlace?.pitch} yaw={currentPlace?.yaw}></Panorama>
 		{/key}
 	{/if}
-	<button
-		in:fade={{ duration: 250, delay: 300 }}
-		aria-label="Video"
-		onclick={() => {
-			verVideo(data.videos.videoUrl);
-		}}
-		class="flex content-center justify-end pointer-events-auto video-btn"
-	>
-		<span class="">{data.textos.botonVideo[lan]}</span>
-	</button>
-	<button
-		in:fade={{ duration: 250, delay: 300 }}
-		aria-label="Video"
-		onclick={() => {
-			verVideo(data.videos.videoUrl2);
-		}}
-		class="flex content-center justify-end pointer-events-auto video-btn2"
-	>
-		<span class="">{data.textos.botonVideo2[lan]}</span>
-	</button>
+	{#if false}
+		<button
+			in:fade={{ duration: 250, delay: 300 }}
+			aria-label="Video"
+			onclick={() => {
+				verVideo(data.videos.videoUrl);
+			}}
+			class="flex content-center justify-end pointer-events-auto video-btn"
+		>
+			<span class="">{data.textos.botonVideo[lan]}</span>
+		</button>
+		<button
+			in:fade={{ duration: 250, delay: 300 }}
+			aria-label="Video"
+			onclick={() => {
+				verVideo(data.videos.videoUrl2);
+			}}
+			class="flex content-center justify-end pointer-events-auto video-btn2"
+		>
+			<span class="">{data.textos.botonVideo2[lan]}</span>
+		</button>
+	{/if}
 	{#if modalVideo}
 		<VideoModal videoSrc={videoUrl} {cerrarVideo}></VideoModal>
 	{/if}
@@ -568,6 +662,32 @@
 			}
 			img {
 				height: 64px;
+			}
+		}
+	}
+	.tramos-btn {
+		display: flex;
+		top: 1926px;
+		font-size: 1.4rem;
+
+		.anterior-btn {
+			width: 345px;
+			height: 77px;
+			background-image: url('../assets/imgs/anterior.png');
+			transition: all 0.2s ease-in-out;
+			&.disable {
+				opacity: 0.4;
+				cursor: auto;
+			}
+		}
+		.siguiente-btn {
+			width: 345px;
+			height: 77px;
+			background-image: url('../assets/imgs/siguiente.png');
+			transition: all 0.2s ease-in-out;
+			&.disable {
+				opacity: 0.4;
+				cursor: auto;
 			}
 		}
 	}

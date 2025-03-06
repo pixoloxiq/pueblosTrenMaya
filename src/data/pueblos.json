@@ -49,9 +49,24 @@
 		"botonVideo": {
 			"es": "VIDEO PROMOCIÓN DE HOTELES",
 			"en": "VIDEO PROMOCIÓN DE HOTELES"
+		},
+		"botonVideo2": {
+			"es": "PROMOCIONES SEMANA SANTA",
+			"en": "PROMOCIONES SEMANA SANTA"
+		},
+		"anterior": {
+			"es": "TRAMO ANTERIOR",
+			"en": "PREVIOUS SECTION"
+		},
+		"siguiente": {
+			"es": "SIGUIENTE TRAMO",
+			"en": "NEXT SECTION"
 		}
 	},
-	"videoUrl": "Video 2_.mp4",
+	"videos": {
+		"videoUrl": "Video 2_.mp4",
+		"videoUrl2": "Video ALFA.mp4"
+	},
 
 	"lugares": [
 		{
@@ -67,13 +82,14 @@
 				"en": "<p>This station serves as one of the starting points of the Mayan Train route and is located in Palenque, Chiapas. It is situated on the grounds of the old airport, where an urban-ecological development is taking shape. The Train Station is the first structure of this new sustainable community, providing a gateway to enjoy the splendors of the jungle, waterfalls, parks, and Mayan communities. Its architecture is inspired by ancient art and vernacular architecture.</p>"
 			},
 
-			"imagen": "01_PALENQUE/Estacion Palenque.jpg",
+			"imagen": "estaciones/Estacion Palenque.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "palenque.svg",
 			"mapa": "e_palenque.svg",
 			"px": 140,
-			"py": -420
+			"py": 420
 		},
 		{
 			"edo": "CHIAPAS",
@@ -91,6 +107,7 @@
 			"imagen": "01_PALENQUE/PALENQUE (2).jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "",
 			"mapa": "e_palenque.svg",
 			"px": 140,
@@ -110,7 +127,8 @@
 			},
 			"imagen": "01_PALENQUE/ZONA ARQUEOLOGICA DE PALENQUE.jpg",
 			"img360": "otros/foto-1-palenque_ret_color.jpg",
-			"pitch": 0,
+			"pitch": 20,
+			"yaw": 0,
 			"icono": "",
 			"mapa": "e_palenque.svg",
 			"px": 140,
@@ -131,6 +149,7 @@
 			"imagen": "01_PALENQUE/HOTEL TREN MAYA PALENQUE.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "",
 			"mapa": "e_palenque.svg",
 			"px": 140,
@@ -149,9 +168,10 @@
 				"en": "<p>At this station, you can discover the magnificent Usumacinta River, various cenotes, and the Pomoná archaeological zone.</p>"
 			},
 
-			"imagen": "02_BOCA DEL CERRO/Estacion-Boca-del-Cerro.jpg",
+			"imagen": "static/assets/imgs/estaciones/Estacion-Boca-del-Cerro.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "boca_del_cerro.svg",
 			"mapa": "e_boca_del_cerro.svg",
 			"px": 202,
@@ -173,6 +193,7 @@
 			"imagen": "02_BOCA DEL CERRO/ZONA ARQUEOLOOGICA DE POMONA.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "",
 			"mapa": "e_boca_del_cerro.svg",
 			"px": 202,
@@ -188,13 +209,14 @@
 			},
 			"descripcion": {
 				"es": "<p>Estación del trayecto ferroviario que conecta al sureste de México, ubicada en el municipio de Tenosique.</p><p>Tenosique es un destino imperdible que ofrece una combinación única de historia, cultura e impresionante entorno natural, con selvas tropicales, ríos y biodiversidad llena de arroyos, lagunas, cuevas y grutas. Por la gran cantidad de atractivos naturales que conserva, Tenosique es propicio para el turismo de aventura, donde se puede observar la fauna, como los monos aulladores, la flora exótica de la selva, los ríos Usumacinta y San Pedro Martín, y las lagunas y arroyos naturales que acompañan la zona arqueológica.</p>",
-				"en": "<p></p>"
+				"en": "<p>This train station is on the railway route connecting southeastern Mexico and is located in the municipality of Tenosique. It is a must-visit, offering a unique blend of history, culture, and an impressive natural environment characterized by tropical jungles, rivers, and rich biodiversity, including numerous streams, lagoons, caves, and grottos. Due to its abundance of natural attractions, Tenosique is ideal for adventure tourism. Visitors can observe a variety of wildlife, including howler monkeys, and explore the exotic flora of the jungle. The area is also home to the Usumacinta and San Pedro Martín rivers, as well as the natural lagoons and streams that complement the archaeological zone.</p>"
 			},
-			"imagen": "",
+			"imagen": "static/assets/imgs/estaciones/ESTACION-TENOSIQUE.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "tenosique.svg",
-			"mapa": "",
+			"mapa": "e_tenosique.svg",
 			"px": 221,
 			"py": 0
 		},
@@ -208,13 +230,14 @@
 			},
 			"descripcion": {
 				"es": "<p>Se encuentra el poblado con el mismo nombre, donde se puede conocer la zona arqueológica Moral- Reforma, la Reserva de la Biosfera Wanha´ y la Reserva Ecológica Cascadas de Reforma, lugares perfectos para practicar senderismo, pasear en lancha o kayak para recorrer y navegar por las cascadas de la selva de México.</p><p>Estación rodeada de antiguos edificios mayas y cascadas, donde se puede navegar entre manglares y explorar cuevas y cañones.</p>",
-				"en": "<p></p>"
+				"en": "<p>In this area, you'll discover the town that shares its name. Here, you can visit the Moral-Reforma archaeological zone, the Wanha' Biosphere Reserve, and the Cascadas de Reforma Ecological Reserve. These locations are ideal for hiking, boating, or kayaking as you explore Mexico's jungle waterfalls. Surrounded by ancient Mayan buildings and stunning waterfalls, this destination offers opportunities to navigate among mangroves and explore caves and canyons.</p>"
 			},
-			"imagen": "",
+			"imagen": "static/assets/imgs/estaciones/ESTACION-EL-TRIUNFO.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "el_triunfo.svg",
-			"mapa": "",
+			"mapa": "e_el_triunfo.svg",
 			"px": 252,
 			"py": 0
 		},
@@ -230,9 +253,10 @@
 				"es": "<p>En Candelaria se encuentra el río con este mismo nombre, que está lleno de tonalidades en colores azules y verdes que alimentan a numerosos cenotes y cascadas. La zona está rodeada de vegetación tropical que acompaña la zona arqueológica el Tigre. Se puede hacer un recorrido por cascadas, ríos, cenotes y lagunas, con una magnífica vista de garzas, pericos, monos y demás fauna silvestre.</p>",
 				"en": "<p>In Candelaria, you'll discover a river that shares its name, filled with blue and green hues that feed numerous cenotes and waterfalls. The area is surrounded by tropical vegetation and is home to the El Tigre archaeological zone. You can tour waterfalls, rivers, cenotes, and lagoons, all while enjoying magnificent views of herons, parrots, monkeys, and a variety of other wildlife.</p>"
 			},
-			"imagen": "05_CANDELARIA/ESTACION-CANDELARIA.jpg",
+			"imagen": "static/assets/imgs/estaciones/ESTACION-CANDELARIA.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "candelaria.svg",
 			"mapa": "e_candelaria.svg",
 			"px": 271,
@@ -253,6 +277,7 @@
 			"imagen": "05_CANDELARIA/EL-TIGRE.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "candelaria.svg",
 			"mapa": "pm_candelaria.svg",
 			"px": 271,
@@ -268,13 +293,14 @@
 			},
 			"descripcion": {
 				"es": "<p>Escárcega es considerada el corazón del Tren Maya, por ser el punto de encuentro de la ruta hacia el sur, norte y oriente de la península de Yucatán. Es el destino ideal para el ecoturismo con su exuberante ecosistema selvático.</p><p> La zona arqueológica de Xpuhil al este de Chicanná, el cenote de Miguel Colorado, el centro “el Tormento” y la laguna de Silvituc, ofrecen a los visitantes experiencias únicas de pesca, actividades acuáticas, recreativas y de aprendizaje de la biodiversidad de nuestro país.</p>",
-				"en": "<p></p>"
+				"en": "<p>Escárcega is considered the heart of the Maya Train, as it is the meeting point for the routes towards the south, north, and east of the Yucatán Peninsula. It is the ideal destination for ecotourism with its lush jungle ecosystem. The Xpuhil archaeological site east of Chicanná, the Miguel Colorado cenote, the “el Tormento” center, and the Silvituc lagoon offer visitors unique experiences in fishing, aquatic activities, recreation, and learning about the biodiversity of our country.</p>"
 			},
-			"imagen": "",
+			"imagen": "static/assets/imgs/estaciones/ESTACION-ESCARCEGA.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "escarcega.svg",
-			"mapa": "",
+			"mapa": "e_escarcega.svg",
 			"px": 312,
 			"py": 0
 		},
@@ -288,13 +314,14 @@
 			},
 			"descripcion": {
 				"es": "<p>Cercano a esta estación se encuentran construcciones como la iglesia de Nuestra señora de las Mercedes, el museo Maya Santa Cruz Xbáalam Naj, playas como Sihoplaya, Playa Bonita y Seybaplaya, el manglar Playa Xpicob, la cual durante ciertas épocas del año da un espectáculo de bioluminiscencia que ilumina las olas y la playa. Los poblados de X-Cabil, Tihosuco y Tepic, cuentan con iglesias con los vestigios de la Guerra de Castas y el museo que expone esta parte de la historia.</p>",
-				"en": "<p></p>"
+				"en": "<p>Near this station, you will find several attractions, including the Church of Our Lady of Mercy and the Santa Cruz Xbáalam Naj Mayan Museum. There are also beautiful beaches such as Sihoplaya, Playa Bonita, Seybaplaya, and Playa Xpicob. During certain times of the year, the mangrove at Playa Xpicob creates a stunning bioluminescent display that illuminates the waves and the beach. Additionally, the towns of X-Cabil, Tihosuco, and Tepic feature churches that have remnants of the Caste War, along with a museum that showcases this significant part of history.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "carrillo_puerto.svg",
-			"mapa": "",
+			"mapa": "e_carrillo_puerto.svg",
 			"px": 342,
 			"py": 0
 		},
@@ -314,6 +341,7 @@
 			"imagen": "08_EDZNA/Estacion-Edzna.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "edzna.svg",
 			"mapa": "e_edzna.svg",
 			"px": 362,
@@ -334,6 +362,7 @@
 			"imagen": "08_EDZNA/ZONA-ARQUEOLOGICA-DE-EDZNA.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "edzna.svg",
 			"mapa": "sa_edzna.svg",
 			"px": 362,
@@ -354,6 +383,7 @@
 			"imagen": "08_EDZNA/HOTEL-TREN-MAYA-EDZNA.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "edzna.svg",
 			"mapa": "e_edzna.svg",
 			"px": 362,
@@ -374,6 +404,7 @@
 			"imagen": "08_EDZNA/HOPELCHEN.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "edzna.svg",
 			"mapa": "sa_chenes.svg",
 			"px": 362,
@@ -388,14 +419,15 @@
 				"en": "SAN FRANCISCO DE CAMPECHE"
 			},
 			"descripcion": {
-				"es": "<p>El Aeropuerto Internacional de Campeche o Aeropuerto Internacional Ingeniero Alberto Acuña Ongay, está localizado a 9 kilómetros de la ciudad de Campeche, Campeche, México.</p>",
-				"en": "<p></p>"
+				"es": "<p>Campeche es una Ciudad Patrimonio con un centro histórico que cautiva con sus calles empedradas y coloridas, flanqueada por las aguas del golfo y antiguas ciudades mayas que comparten tradiciones con pueblos llenos de sabores típicos. Ofrece una rica historia y arquitectura colonial, incluyendo murallas, museos, playas y una gastronomía tradicional.</p>",
+				"en": "<p>Campeche is a captivating heritage city known for its historic center, which features charming cobblestone streets and vibrant colors. Surrounded by the Gulf waters and ancient Mayan cities, Campeche shares cultural traditions with nearby towns that are rich in local flavors. The city boasts a rich history and impressive colonial architecture, including fort walls, museums, beautiful beaches, and traditional cuisine.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "s_f_campeche.svg",
-			"mapa": "",
+			"mapa": "e_san_francisco.svg",
 			"px": 349,
 			"py": 0
 		},
@@ -409,13 +441,14 @@
 			},
 			"descripcion": {
 				"es": "<p>El lugar cuenta vestigios de antiguas ciudades mayas y monumentos históricos como la ex hacienda San Antonio Hom y zonas arqueológicas como \"La Xoch\" y \"Chun Cedro.\" La música tradicional es la jarana y entre las festividades destacan la fiesta del Gran Poder del Divino Rostro y los novenarios a la Virgen de la Asunción.</p>",
-				"en": "<p></p>"
+				"en": "<p>The area features remnants of ancient Mayan cities, historical landmarks such as the former San Antonio Hom hacienda, and archaeological sites like \"La Xoch\" and \"Chun Cedro.\" Traditional music in the region includes the jarana. Notable festivities include the Festival of the Great Power of the Divine Face and the novenas honoring the Virgin of the Assumption.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "tenabo.svg",
-			"mapa": "",
+			"mapa": "e_tenabo.svg",
 			"px": 382,
 			"py": 0
 		},
@@ -429,13 +462,14 @@
 			},
 			"descripcion": {
 				"es": "<p>Hecelchakán fue fundada desde el siglo XVI. El municipio cuenta con monumentos históricos como la Iglesia y Convento de San Francisco de Asís, claro ejemplo de la arquitectura colonial; la Iglesia de La Purísima Concepción; la Iglesia de Los Santos Reyes; la ex hacienda de Tzotzil, y Xculhoc, entre otros. Otro atractivo es el Museo de Arqueología Maya del Camino Real, Hecelchakán. </p>",
-				"en": "<p></p>"
+				"en": "<p>Hecelchakán was founded in the 16th century and features several historical monuments, including the Church and Convent of San Francisco de Asís, which is a prominent example of colonial architecture. Other noteworthy sites include the Church of La Purísima Concepción, the Church of Los Santos Reyes, and the former Tzotzil hacienda. Additionally, visitors can explore Xculhoc and the Mayan Archaeology Museum of the Royal Road, Hecelchakán, which is another popular attraction in the area.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "hecelchakan.svg",
-			"mapa": "",
+			"mapa": "e_hecelchakan.svg",
 			"px": 394,
 			"py": 0
 		},
@@ -454,6 +488,7 @@
 			"imagen": "12_CALKINI/ESTACION-CALKINI.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "calkini.svg",
 			"mapa": "e_calkini.svg",
 			"px": 405,
@@ -474,6 +509,7 @@
 			"imagen": "13_MAXCANU/HOTEL-NUEVO-UXMAL.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "calkini.svg",
 			"mapa": "hg_nuevo_uxmal.svg",
 			"px": 405,
@@ -494,6 +530,7 @@
 			"imagen": "13_MAXCANU/ZONA-ARQUEOLOGICA-DE-UXMAL.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "calkini.svg",
 			"mapa": "sa_uxmal.svg",
 			"px": 405,
@@ -514,6 +551,7 @@
 			"imagen": "13_MAXCANU/ZONA ARQUEOLOGICA DE KABAH.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "calkini.svg",
 			"mapa": "sa_kabah.svg",
 			"px": 405,
@@ -529,13 +567,14 @@
 			},
 			"descripcion": {
 				"es": "<p>Maxcanú es un pintoresco pueblo con una población mayoritariamente indígena que habla maya. Tiene monumentos históricos, capillas y haciendas. También cuenta con un sitio arqueológico cerca de Chunchucmil.</p><p>La estación acerca a la impresionante Ruta Puuc, a un parque temático y una enigmática gruta, donde se puede apreciar muestras de arte religioso, arqueológico y natural.</p><p>La música típica es la jarana, trova y boleros, mientras que la danza destaca la jarana. Las artesanías incluyen talabartería, alfarería, joyería de fantasía y sombreros de guano.</p>",
-				"en": "<p></p>"
+				"en": "<p>Maxcanú is a picturesque town with a predominantly indigenous population that speaks the Mayan language. The town features historical monuments, chapels, and haciendas, as well as an archaeological site located near Chunchucmil. Visitors can explore the impressive Puuc Route, a theme park, and an intriguing grotto where various forms of religious, archaeological, and natural art can be appreciated. The typical music includes jarana, trova, and boleros, with jarana dance being a popular highlight. Local crafts include leatherwork, pottery, costume jewelry, and guano hats.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "maxcanu.svg",
-			"mapa": "",
+			"mapa": "e_maxcanu.svg",
 			"px": 419,
 			"py": 0
 		},
@@ -549,13 +588,14 @@
 			},
 			"descripcion": {
 				"es": "<p>Umán fue una ciudad importante desde el siglo XVI por ser cruce de caminos hacia Mérida. Punto de partida para conocer manglares, canales naturales y muchas aves. Tiene diversidad de monumentos históricos como el Exconvento y Parroquia de San Francisco de Asís, capillas y haciendas notables. Además, cuenta con zonas arqueológicas como Bolón, Hotzus y Kizil. La música tradicional incluye la jarana yucateca, la trova yucateca y los boleros. </p>",
-				"en": "<p></p>"
+				"en": "<p>Umán was a significant city in the 16th century and served as a crossroads to Mérida. This area serves as an excellent starting point for exploring mangroves, natural channels, and a diverse array of bird species. The city is home to various historical monuments, including the Ex-Convent and Parish of San Francisco de Asís, as well as chapels, notable haciendas, and archaeological zones such as Bolón, Hotzus, and Kizil. Traditional music in the region features styles like Yucatecan jarana, trova, and boleros.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "uman.svg",
-			"mapa": "",
+			"mapa": "e_uman.svg",
 			"px": 442,
 			"py": 0
 		},
@@ -574,6 +614,7 @@
 			"imagen": "15_MERIDA TEYA/ESTACION-MERIDA-TEYA.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "merida_teya.svg",
 			"mapa": "e_teya_merida.svg",
 			"px": 478,
@@ -594,6 +635,7 @@
 			"imagen": "15_MERIDA TEYA/PARQUE NACIONAL DZIBILCHANTUN.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "merida_teya.svg",
 			"mapa": "sa_dzibilchantun.svg",
 			"px": 478,
@@ -609,13 +651,14 @@
 			},
 			"descripcion": {
 				"es": "<p>El poblado de Tixkokob fue fundado en el siglo XVI como una encomienda. Es un encantador pueblo de Yucatán cerca de Mérida, destino histórico y cultural en la ruta del Tren Maya. Su historia se entrelaza con la cultura maya y la colonización española. Se puede explorar la Iglesia de San Bernardino de Siena y disfrutar de cenotes en medio de la exuberante vegetación.</p>",
-				"en": "<p></p>"
+				"en": "<p>The charming village of Tixkokob, founded in the 16th century as an encomienda, is situated in Yucatán, near Mérida. This historical and cultural destination lies along the Mayan Train route and has a rich history that intertwines Mayan culture with Spanish colonization. Visitors can explore the Church of San Bernardino de Siena and enjoy the nearby cenotes amidst lush vegetation.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "tixkokob.svg",
-			"mapa": "",
+			"mapa": "e_tixkokob.svg",
 			"px": 498,
 			"py": 0
 		},
@@ -634,6 +677,7 @@
 			"imagen": "17_IZAMAL/ESTACION IZAMAL.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "izamal.svg",
 			"mapa": "e_izamal.svg",
 			"px": 540,
@@ -654,6 +698,7 @@
 			"imagen": "17_IZAMAL/EXCONVENTO DE SAN ANTONIO DE PADUA.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "izamal.svg",
 			"mapa": "e_izamal.svg",
 			"px": 540,
@@ -674,6 +719,7 @@
 			"imagen": "18_CHICHEN ITZA/ESTACION-CHICHEN-ITZA.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "chichen_itza.svg",
 			"mapa": "e_chichen_itza.svg",
 			"px": 615,
@@ -694,6 +740,7 @@
 			"imagen": "18_CHICHEN ITZA/ZONA-ARQUEOLOGICA-CHICHEN-ITZA.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "chichen_itza.svg",
 			"mapa": "sa_chichen_itza.svg",
 			"px": 615,
@@ -713,7 +760,8 @@
 			},
 			"imagen": "18_CHICHEN ITZA/ZONA-ARQUEOLOGICA-CHICHEN-ITZA.jpg",
 			"img360": "HOTEL TREN MAYA CHICHEN ITZA.jpg",
-			"pitch": 0,
+			"pitch": -10,
+			"yaw": 40,
 			"icono": "chichen_itza.svg",
 			"mapa": "hg_chichen_itza.svg",
 			"px": 615,
@@ -734,6 +782,7 @@
 			"imagen": "19_VALLADOLID/ESTACION-VALLADOLID-.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "valladolid.svg",
 			"mapa": "e_valladolid.svg",
 			"px": 663,
@@ -754,6 +803,7 @@
 			"imagen": "19_VALLADOLID/VALLADOLID_PUEBLO_MAGICO.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "valladolid.svg",
 			"mapa": "e_valladolid.svg",
 			"px": 663,
@@ -774,6 +824,7 @@
 			"imagen": "19_VALLADOLID/ZONA_ARQUEOLOGICA_EK_BALAM.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "valladolid.svg",
 			"mapa": "sa_ek_balam.svg",
 			"px": 663,
@@ -789,13 +840,14 @@
 			},
 			"descripcion": {
 				"es": "<p>Nuevo Xcan es un pueblo donde se puede disfrutar del turismo comunitario, como en el Parque Ta’akbil Ja. Ofrece experiencias como senderismo, rapel, actividades acuáticas en cenotes y ríos subterráneos, así como gastronomía y hospedaje. La zona cuenta con diversos cenotes, así como el Área de Protección de Flora y Fauna Otoch Ma’ax Yetel Kooh.</p>",
-				"en": "<p></p>"
+				"en": "<p>Nuevo Xcan is a village that offers a unique community tourism experience, especially at Ta'akbil Ja Park. Visitors can enjoy activities such as hiking, rappelling, and water sports in the cenotes and underground rivers. The village is also known for its delicious local cuisine and offers various lodging options. Additionally, the area features several cenotes and is home to the Otoch Ma'ax Yetel Kooh Flora and Fauna Protection Area.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "nuevo_xcan.svg",
-			"mapa": "",
+			"mapa": "e_nuevo_xcan.svg",
 			"px": 744,
 			"py": 0
 		},
@@ -809,13 +861,14 @@
 			},
 			"descripcion": {
 				"es": "<p>Es conocido por su actividad agrícola y venta de productos locales. Forma parte del municipio de Puerto Morelos. El lugar cuenta con cenotes, balnearios y una cabecera con casas y solares mayas, parques ecológicos y espacios ecoturísticos. </p>",
-				"en": "<p></p>"
+				"en": "<p>Known for its agricultural activities and local product sales, this area is part of the municipality of Puerto Morelos. It features cenotes, swimming spots, a town center with Mayan houses, and ecological parks, as well as ecotourism spaces.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "leona_vicario.svg",
-			"mapa": "",
+			"mapa": "e_leona_vicario.svg",
 			"px": 796,
 			"py": 0
 		},
@@ -834,6 +887,7 @@
 			"imagen": "22_CANCUN/ESTACION-CANCUN.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "cancun.svg",
 			"mapa": "e_cancun.svg",
 			"px": 846,
@@ -854,6 +908,7 @@
 			"imagen": "22_CANCUN/PUEBLO-MAGICO-DE-ISLA-MUJERES (1).jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "cancun.svg",
 			"mapa": "pm_isla_mujeres.svg",
 			"px": 846,
@@ -869,13 +924,14 @@
 			},
 			"descripcion": {
 				"es": "<p>En esta estación se encuentra uno de los puertos más importantes de Quintana Roo, debido a que posee una gran zona pesquera y hotelera, misma que se encuentra rodeada de una sobresaliente belleza natural ancestral. La ruta de los cenotes, las playas, la Plaza Principal y el Faro Inclinado son algunos de sus atractivos.</p>",
-				"en": "<p></p>"
+				"en": "<p>This station is home to one of the most important ports in Quintana Roo, largely due to its vast fishing areas and hotel facilities, all surrounded by breathtaking natural beauty. Some of the main attractions include the Route of Cenotes, beautiful beaches, the Main Plaza, and the \"Faro Inclinado\" (Leaning Lighthouse).</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "puerto_morelos.svg",
-			"mapa": "",
+			"mapa": "e_puerto_morelos.svg",
 			"px": 841,
 			"py": 0
 		},
@@ -894,6 +950,7 @@
 			"imagen": "24_PLAYA DEL CARMEN/ESTACION-PLAYA-DEL-CARMEN.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "playa_del_carmen.svg",
 			"mapa": "e_playa_del_carmen.svg",
 			"px": 817,
@@ -914,6 +971,7 @@
 			"imagen": "24_PLAYA DEL CARMEN/COZUMEL_PUEBLO_MAGICO.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "playa_del_carmen.svg",
 			"mapa": "pm_cozumel.svg",
 			"px": 817,
@@ -933,7 +991,8 @@
 			},
 			"imagen": "fondo_sitios_0.jpg",
 			"img360": "EstacionTulum1.jpg",
-			"pitch": 0,
+			"pitch": -30,
+			"yaw": 0,
 			"icono": "tulum.svg",
 			"mapa": "e_tulum.svg",
 			"px": 776,
@@ -954,6 +1013,7 @@
 			"imagen": "25_TULUM/ZONA-ARQUEOLOGICA-DE-TULUM.jpg",
 			"img360": "HOTEL TREN MAYA TULUM.jpg",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "tulum.svg",
 			"mapa": "e_tulum.svg",
 			"px": 776,
@@ -974,6 +1034,7 @@
 			"imagen": "25_TULUM/ZONA ARQUEOLOGICA DE TULUM.png",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "tulum.svg",
 			"mapa": "e_tulum.svg",
 			"px": 776,
@@ -994,6 +1055,7 @@
 			"imagen": "25_TULUM/centro-de-tulum.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "tulum.svg",
 			"mapa": "e_tulum.svg",
 			"px": 776,
@@ -1014,6 +1076,7 @@
 			"imagen": "25_TULUM/Aeropuerto-de-Tulum.jpg",
 			"img360": "EstacionTulumAeropuerto001.jpg",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "tulum_aeropuerto.svg",
 			"mapa": "a_tulum.svg",
 			"px": 742,
@@ -1034,6 +1097,7 @@
 			"imagen": "25_TULUM/Zona-Arqueologica-de-Coba.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "tulum.svg",
 			"mapa": "sa_coba.svg",
 			"px": 742,
@@ -1049,13 +1113,14 @@
 			},
 			"descripcion": {
 				"es": "<p>En esta estación los usuarios podrán conocer más sobre la cultura maya, la Guerra de Castas, así como las raíces y la resistencia cultural de los pueblos del sureste mexicano. Ofrece diversas bellezas naturales y vestigios históricos y culturales. Una de las construcciones emblemáticas es la Iglesia Balam Nah, mejor conocida como Santuario de la Cruz Parlante.</p>",
-				"en": "<p></p>"
+				"en": "<p>At this station, visitors can learn about Mayan culture, the Caste War, and the cultural roots and resistance of the towns in southeastern Mexico. The area showcases various natural beauties alongside historical and cultural remnants. One of the most notable constructions is the Balam Nah Church, commonly known as the Sanctuary of the Speaking Cross.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "felipe_carrillo_puerto.svg",
-			"mapa": "",
+			"mapa": "e_felipe_carrillo_puerto.svg",
 			"px": 685,
 			"py": 0
 		},
@@ -1069,13 +1134,14 @@
 			},
 			"descripcion": {
 				"es": "<p>Es la estación ideal para encontrarse con la riqueza coralina más impresionante de México y el hogar de las caobas centenarias llamada Noh Bec, que es la primera comunidad forestal certificada en el mundo. Se puede conocer la Zona Arqueológica de Chacchoben y Mahahual.</p>",
-				"en": "<p></p>"
+				"en": "<p>This is the ideal location to explore Mexico's stunning coral diversity and the site of centuries-old mahogany trees known as Noh Bec, the world's first certified community forest. Visitors can discover the Chacchoben and Mahahual Archaeological Sites.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "limones.svg",
-			"mapa": "",
+			"mapa": "e_limones.svg",
 			"px": 675,
 			"py": 0
 		},
@@ -1093,7 +1159,8 @@
 			},
 			"imagen": "29_BACALAR/Estacion-Bacalar.jpg",
 			"img360": "EstacionBacalar01.jpg",
-			"pitch": 0,
+			"pitch": -20,
+			"yaw": 0,
 			"icono": "bacalar.svg",
 			"mapa": "e_bacalar.svg",
 			"px": 635,
@@ -1114,6 +1181,7 @@
 			"imagen": "29_BACALAR/Pueblo-Magico-Bacalar.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "bacalar.svg",
 			"mapa": "e_bacalar.svg",
 			"px": 635,
@@ -1129,13 +1197,14 @@
 			},
 			"descripcion": {
 				"es": "<p>La capital de Quintana Roo se encuentra a orillas de la gran bahía que le da nombre. Es la puerta de entrada al sur del estado, con una gran riqueza natural con selva, lagunas y tesoros coralinos. La Bahía de Chetumal fue decretada como Área Natural Protegida para la conservación del manatí.</p>",
-				"en": "<p></p>"
+				"en": "<p>The capital of Quintana Roo is located along the shores of the expansive bay that shares its name. This city serves as the gateway to the southern region of the state, known for its rich natural resources, including jungles, lagoons, and coral reefs. The Bay of Chetumal has been designated as a Protected Natural Area to help conserve the local manatee population.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "chetumal.svg",
-			"mapa": "",
+			"mapa": "e_chetumal_aeropuerto.svg",
 			"px": 651,
 			"py": 0
 		},
@@ -1154,6 +1223,7 @@
 			"imagen": "31_NICOLAS BRAVO KOHUNLICH/ESTACION-NICOLAS-BRAVO--KOHUNLICH-.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "nicolas_bravo.svg",
 			"mapa": "e_nicolas_bravo.svg",
 			"px": 560,
@@ -1174,6 +1244,7 @@
 			"imagen": "31_NICOLAS BRAVO KOHUNLICH/ZONA_ARQUEOLOGICA_KOHUNLICH.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "nicolas_bravo.svg",
 			"mapa": "sa_kohunlich.svg",
 			"px": 560,
@@ -1194,6 +1265,7 @@
 			"imagen": "32_XPUJIL/ESTACION-XPUJIL.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "xpujil.svg",
 			"mapa": "e_xpujil.svg",
 			"px": 497,
@@ -1214,6 +1286,7 @@
 			"imagen": "32_XPUJIL/ZONA ARQUEOLOGICA DE XPUHIL.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "xpujil.svg",
 			"mapa": "sa_xpuhil.svg",
 			"px": 497,
@@ -1234,6 +1307,7 @@
 			"imagen": "32_XPUJIL/ZONA ARQUEOLOGICA DE BECAN.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "xpujil.svg",
 			"mapa": "sa_becan.svg",
 			"px": 497,
@@ -1254,10 +1328,11 @@
 			"imagen": "33_CALAKMUL/ESTACION CALAKMUL.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "kalakmul.svg",
 			"mapa": "e_calakmul.svg",
 			"px": 426,
-			"py": 0
+			"py": 420
 		},
 		{
 			"edo": "CAMPECHE",
@@ -1272,8 +1347,9 @@
 				"en": "<p>Nestled in the heart of the jungle, this hotel is just 10 kilometers from the Calakmul archaeological zone. Guests have the unique opportunity to immerse themselves in the region's wildlife, as the hotel is in a protected natural area. Additionally, it is close to one of the country's most significant archaeological sites, which is designated a UNESCO World Heritage site.</p>"
 			},
 			"imagen": "fondo_sitios_0.jpg",
-			"img360": "HOTEL TREN MAYA CALAKMUL.jpg",
-			"pitch": 0,
+			"img360": "HOTEL TREN MAYA CALAKMUL .jpg",
+			"pitch": -20,
+			"yaw": 0,
 			"icono": "kalakmul.svg",
 			"mapa": "e_calakmul.svg",
 			"px": 426,
@@ -1294,6 +1370,7 @@
 			"imagen": "33_CALAKMUL/ZONA ARQUEOLOGICA DE CALAKMUL.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "kalakmul.svg",
 			"mapa": "e_calakmul.svg",
 			"px": 426,
@@ -1314,6 +1391,7 @@
 			"imagen": "33_CALAKMUL/ZONA_ARQUEOLOGICA_EK_BALAM.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "kalakmul.svg",
 			"mapa": "sa_balamku.svg",
 			"px": 426,
@@ -1329,13 +1407,14 @@
 			},
 			"descripcion": {
 				"es": "<p>La estación Centenario conecta a los usuarios con la naturaleza y ofrece una experiencia de turismo rural. Tiene la Laguna de Silvituc o Laguna Noh, un atractivo espejo de agua. Se puede practicar la observación de aves, flora y fauna y conocer vestigios mayas como Balamkú.</p>",
-				"en": "<p></p>"
+				"en": "<p>The Centenario Station connects visitors with nature and offers a rural tourism experience. It features the Silvituc Lagoon or Noh Lagoon, a captivating water mirror. Visitors can engage in birdwatching, flora and fauna observation, and explore Mayan remnants like Balamkú.</p>"
 			},
 			"imagen": "",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"icono": "centenario.svg",
-			"mapa": "",
+			"mapa": "e_centenario.svg",
 			"px": 374,
 			"py": 0
 		},
@@ -1356,6 +1435,7 @@
 			"imagen": "35_MEXICANA/35_01.jpg",
 			"img360": "",
 			"pitch": 0,
+			"yaw": 0,
 			"mapa": "",
 			"px": 140,
 			"py": 0

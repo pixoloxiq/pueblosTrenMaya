@@ -2,7 +2,7 @@
 	let { onLanguageChange, lan, data } = $props();
 	import { fade } from 'svelte/transition';
 	import imgInst from '../assets/imgs/2.png';
-	import imgInstBack from '../assets/imgs/back_inst.png';
+	import imgInstBack from '../assets/imgs/foto-opacidad.jpg';
 	import iconHand from '../assets/imgs/icon_handSwipe.svg';
 	// import function to register Swiper custom elements
 	import { register } from 'swiper/element/bundle';

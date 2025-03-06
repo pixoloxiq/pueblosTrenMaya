@@ -13,10 +13,11 @@
 	let scrollLeft: number = $state(0);
 	let startX: number = $state(0);
 	const scale: { val: number } = getContext('scale');
+	let isMoving = $state(false);
 
-	let { onLanguageChange, lan, data, tauri, updateSlide, updateInfo } = $props();
+	let { onLanguageChange, lan, data, tauri, updateSlide, updateInfo, lugarIndex = $bindable() } = $props();
 
-	let lugarIndex = $state(1);
+	//let lugarIndex = $state(1);
 	let lugarId = $state('1');
 
 	$effect(() => {
@@ -122,6 +123,7 @@
 	const observeFunction = (entries: any) => {
 		entries.forEach((entry: { target: any; isIntersecting: any }) => {
 			let id = entry.target.id.split('-')[1];
+			if (isMoving) return;
 			if (entry.isIntersecting) {
 				console.log(`${entry.target.id}  is visible`);
 				lugarIndex = parseInt(id);
@@ -198,6 +200,24 @@
 
 	//$inspect(isDown);
 	$inspect(lugarIndex);
+	$inspect(`isMoving ${isMoving}`);
+
+	export const moveToSlide = (slideIndex: number) => {
+		let myElement = document.getElementById('item-' + slideIndex);
+		lugarIndex = slideIndex;
+		console.log(`moveToSlide ${slideIndex}`);
+		console.log(myElement);
+		isMoving = true;
+		myElement?.classList.add('selected');
+
+		myElement?.scrollIntoView({ inline: 'center', block: 'center', behavior: 'smooth' });
+		setTimeout(() => {
+			isMoving = false;
+		}, 1000);
+	};
+	export const updateLugarIndex = (val: number) => {
+		lugarIndex = val;
+	};
 </script>
 
 <!-- <div class="absolute top-0">
@@ -242,7 +262,7 @@
 					></IconoEstacion>
 				</div>
 				<Tren edo={lugar.edo} length={getTrenLength(i)} />
-			{:else}
+			{:else if lugar.info}
 				<div class="flex items-center float-left iconContainer">
 					<!-- <img
 					src={iconSitioArqueologicoBig}
